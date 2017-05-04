@@ -20,7 +20,7 @@ public class HomeServlet extends HttpServlet {
 
     private String getDestination(HttpSession session) {
         if (isAuthenticated(session)) {
-            return (String) session.getAttribute("user_home");
+            return (String) session.getAttribute("userHome");
         } else {
             return "/login";
         }
