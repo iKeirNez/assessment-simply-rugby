@@ -1,23 +1,31 @@
 package com.keirnellyer.simplyrugby.skill;
 
 public class Skill {
+    private final SkillCategory category;
     private final String type;
     private int value = 0;
     private String comment = null;
 
-    public Skill(String type) {
+    public Skill(SkillCategory category, String type) {
+        this.category = category;
         this.type = type;
     }
 
-    public Skill(String type, int value) {
+    public Skill(SkillCategory category, String type, int value) {
+        this.category = category;
         this.type = type;
         this.value = value;
     }
 
-    public Skill(String type, int value, String comment) {
+    public Skill(SkillCategory category, String type, int value, String comment) {
+        this.category = category;
         this.type = type;
         this.value = value;
         this.comment = comment;
+    }
+
+    public SkillCategory getCategory() {
+        return category;
     }
 
     public String getType() {
