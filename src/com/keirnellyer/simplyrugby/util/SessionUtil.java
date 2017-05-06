@@ -1,7 +1,7 @@
 package com.keirnellyer.simplyrugby.util;
 
 import com.keirnellyer.simplyrugby.user.Administrator;
-import com.keirnellyer.simplyrugby.user.Member;
+import com.keirnellyer.simplyrugby.user.JuniorMember;
 import com.keirnellyer.simplyrugby.user.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +21,7 @@ public class SessionUtil {
     }
 
     public static boolean isMember(User user) {
-        return user instanceof Member;
+        return user instanceof JuniorMember;
     }
 
     public static void redirectLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {

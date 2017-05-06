@@ -3,11 +3,11 @@ package com.keirnellyer.simplyrugby.user;
 import com.keirnellyer.simplyrugby.navbar.Navigation;
 import com.keirnellyer.simplyrugby.navbar.NavigationElement;
 
-public class Member extends User {
+public class JuniorMember extends User {
     private String firstName = "";
     private String lastName = "";
 
-    public Member(String username) {
+    public JuniorMember(String username) {
         super(username);
 
         initializeNavBar();

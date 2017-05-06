@@ -1,7 +1,8 @@
 package com.keirnellyer.simplyrugby.repository;
 
 import com.keirnellyer.simplyrugby.user.Administrator;
-import com.keirnellyer.simplyrugby.user.Member;
+import com.keirnellyer.simplyrugby.user.JuniorMember;
+import com.keirnellyer.simplyrugby.user.SeniorMember;
 import com.keirnellyer.simplyrugby.user.User;
 
 import java.util.ArrayList;
@@ -20,11 +21,17 @@ public class UserRepository {
         admin.setPassword("admin");
         users.add(admin);
 
-        Member jSmith = new Member("jsmith");
+        JuniorMember jSmith = new JuniorMember("jsmith");
         jSmith.setPassword("password");
         jSmith.setFirstName("John");
         jSmith.setLastName("Smith");
         users.add(jSmith);
+
+        SeniorMember jAppleSeed = new SeniorMember("jappleseed");
+        jAppleSeed.setPassword("password");
+        jAppleSeed.setFirstName("John");
+        jAppleSeed.setLastName("Appleseed");
+        users.add(jAppleSeed);
     }
 
     public void register(User user) {

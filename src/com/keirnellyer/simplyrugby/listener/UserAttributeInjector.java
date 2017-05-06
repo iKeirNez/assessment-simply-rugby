@@ -1,7 +1,8 @@
 package com.keirnellyer.simplyrugby.listener;
 
 import com.keirnellyer.simplyrugby.user.Administrator;
-import com.keirnellyer.simplyrugby.user.Member;
+import com.keirnellyer.simplyrugby.user.JuniorMember;
+import com.keirnellyer.simplyrugby.user.SeniorMember;
 import com.keirnellyer.simplyrugby.user.User;
 
 import javax.servlet.annotation.WebListener;
@@ -24,11 +25,13 @@ public class UserAttributeInjector implements HttpSessionAttributeListener {
             String displayName;
             String userHome;
 
-            if (user instanceof Member) {
-                Member member = (Member) user;
+            if (user instanceof JuniorMember) {
+                JuniorMember member = (JuniorMember) user;
                 displayName = member.getFirstName();
                 userHome = "/member";
-                session.setAttribute("canEditProfile", true);
+
+                // only senior members can edit profile
+                session.setAttribute("canEditProfile", user instanceof SeniorMember);
             } else {
                 Administrator administrator = (Administrator) user;
                 userHome = "/admin";
