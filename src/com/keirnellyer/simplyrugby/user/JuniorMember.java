@@ -2,10 +2,15 @@ package com.keirnellyer.simplyrugby.user;
 
 import com.keirnellyer.simplyrugby.navbar.Navigation;
 import com.keirnellyer.simplyrugby.navbar.NavigationElement;
+import com.keirnellyer.simplyrugby.skill.Skill;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class JuniorMember extends User {
     private String firstName = "";
     private String lastName = "";
+    private final List<Skill> skills = new ArrayList<>();
 
     public JuniorMember(String username) {
         super(username);
@@ -39,5 +44,13 @@ public class JuniorMember extends User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Skill> getSkills() {
+        return skills;
+    }
+
+    public void addSkill(Skill skill) {
+        skills.add(skill);
     }
 }
