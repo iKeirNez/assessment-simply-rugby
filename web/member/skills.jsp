@@ -14,7 +14,7 @@
             <td>Category</td>
             <td>Type</td>
 
-            <c:forEach begin="0" end="5" varStatus="loop">
+            <c:forEach begin="1" end="5" varStatus="loop">
                 <td>${loop.index}</td>
             </c:forEach>
         </tr>
@@ -24,7 +24,7 @@
                 <td>${skill.category.name()}</td>
                 <td>${skill.type}</td>
 
-                <c:forEach begin="0" end="5" varStatus="loop">
+                <c:forEach begin="1" end="5" varStatus="loop">
                     <td>
                         <c:if test="${skill.value == loop.index}">
                             *
