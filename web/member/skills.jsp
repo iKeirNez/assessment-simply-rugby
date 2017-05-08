@@ -9,7 +9,7 @@
 <body>
 <c:import url="/WEB-INF/includes/navbar.jsp" />
 <div class="container">
-    <table class="table-bordered table-hover">
+    <table class="table-bordered">
         <tr>
             <td>Category</td>
             <td>Type</td>
@@ -19,19 +19,24 @@
             </c:forEach>
         </tr>
 
-        <c:forEach items="${user.skills}" var="skill">
-            <tr>
-                <td>${skill.category.name()}</td>
-                <td>${skill.type}</td>
+        <c:forEach items="${user.skills}" var="category">
+            <c:forEach items="${category.skills}" var="skill" varStatus="skillLoop">
+                <tr>
+                    <c:if test="${skillLoop.isFirst()}">
+                        <td rowspan="${category.skills.size()}">${category.name}</td>
+                    </c:if>
 
-                <c:forEach begin="1" end="5" varStatus="loop">
-                    <td>
-                        <c:if test="${skill.value == loop.index}">
-                            *
-                        </c:if>
-                    </td>
-                </c:forEach>
-            </tr>
+                    <td>${skill.name}</td>
+
+                    <c:forEach begin="1" end="5" varStatus="loop">
+                        <td>
+                            <c:if test="${skill.value == loop.index}">
+                                *
+                            </c:if>
+                        </td>
+                    </c:forEach>
+                </tr>
+            </c:forEach>
         </c:forEach>
     </table>
 </div>
