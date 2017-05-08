@@ -9,12 +9,12 @@
 <body>
 <c:import url="/WEB-INF/includes/navbar.jsp" />
 <div class="container">
-    <table class="table table-bordered">
+    <table class="table table-bordered skills-table">
         <thead class="thead-default">
         <tr>
             <th rowspan="2">Category</th>
             <th rowspan="2">Skill</th>
-            <th colspan="5">Skill level</th>
+            <th colspan="5">Skill Level</th>
             <th rowspan="2">Comments</th>
         </tr>
         <tr>
