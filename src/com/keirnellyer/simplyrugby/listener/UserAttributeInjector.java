@@ -22,7 +22,7 @@ public class UserAttributeInjector implements HttpSessionAttributeListener {
             String displayName;
             String userHome;
 
-            if (user instanceof JuniorMember) {
+            if (user instanceof Member) {
                 Member member = (Member) user;
                 displayName = member.getFirstName();
                 userHome = "/member";
