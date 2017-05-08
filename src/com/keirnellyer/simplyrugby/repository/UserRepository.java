@@ -32,12 +32,12 @@ public class UserRepository {
         defaultSkills.forEach(jSmith::addSkill);
         users.add(jSmith);
 
-        SeniorMember jAppleSeed = new SeniorMember("jappleseed");
-        jAppleSeed.setPassword("password");
-        jAppleSeed.setFirstName("John");
-        jAppleSeed.setLastName("Appleseed");
-        defaultSkills.forEach(jAppleSeed::addSkill);
-        users.add(jAppleSeed);
+        SeniorMember gMullen = new SeniorMember("ged");
+        gMullen.setPassword("password");
+        gMullen.setFirstName("Ged");
+        gMullen.setLastName("Mullen");
+        defaultSkills.forEach(gMullen::addSkill);
+        users.add(gMullen);
     }
 
     private List<SkillCategory> getDefaultSkills() {
