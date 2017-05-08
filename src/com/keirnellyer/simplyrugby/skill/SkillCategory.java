@@ -5,7 +5,7 @@ import java.util.List;
 
 public class SkillCategory {
     private final String name;
-    private final String comment;
+    private String comment;
 
     private final List<Skill> skills = new ArrayList<>();
 
@@ -24,6 +24,10 @@ public class SkillCategory {
 
     public String getComment() {
         return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public List<Skill> getSkills() {

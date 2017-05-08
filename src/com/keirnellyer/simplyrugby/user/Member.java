@@ -2,13 +2,13 @@ package com.keirnellyer.simplyrugby.user;
 
 import com.keirnellyer.simplyrugby.navbar.Navigation;
 import com.keirnellyer.simplyrugby.navbar.NavigationElement;
-import com.keirnellyer.simplyrugby.skill.Skill;
+import com.keirnellyer.simplyrugby.skill.SkillCategory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Member extends User {
-    private final List<Skill> skills = new ArrayList<>();
+    private final List<SkillCategory> skills = new ArrayList<>();
     private String firstName = "";
     private String lastName = "";
 
@@ -45,11 +45,11 @@ public abstract class Member extends User {
         this.lastName = lastName;
     }
 
-    public List<Skill> getSkills() {
+    public List<SkillCategory> getSkills() {
         return skills;
     }
 
-    public void addSkill(Skill skill) {
+    public void addSkill(SkillCategory skill) {
         skills.add(skill);
     }
 }

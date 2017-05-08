@@ -1,6 +1,7 @@
 package com.keirnellyer.simplyrugby.repository;
 
 import com.keirnellyer.simplyrugby.skill.Skill;
+import com.keirnellyer.simplyrugby.skill.SkillCategory;
 import com.keirnellyer.simplyrugby.user.Administrator;
 import com.keirnellyer.simplyrugby.user.JuniorMember;
 import com.keirnellyer.simplyrugby.user.SeniorMember;
@@ -22,18 +23,7 @@ public class UserRepository {
         admin.setPassword("admin");
         users.add(admin);
 
-        List<Skill> defaultSkills = new ArrayList<>();
-        defaultSkills.add(new Skill("Standard", 5));
-        defaultSkills.add(new Skill("Spin", 1));
-        defaultSkills.add(new Skill("Pop", 5));
-        defaultSkills.add(new Skill("Front", 3));
-        defaultSkills.add(new Skill("Rear", 5));
-        defaultSkills.add(new Skill("Side", 4));
-        defaultSkills.add(new Skill("Scrabble", 5));
-        defaultSkills.add(new Skill("Drop", 5));
-        defaultSkills.add(new Skill("Punt", 5));
-        defaultSkills.add(new Skill("Grubber", 5));
-        defaultSkills.add(new Skill("Goal", 2));
+        List<SkillCategory> defaultSkills = getDefaultSkills();
 
         JuniorMember jSmith = new JuniorMember("jsmith");
         jSmith.setPassword("password");
@@ -48,6 +38,33 @@ public class UserRepository {
         jAppleSeed.setLastName("Appleseed");
         defaultSkills.forEach(jAppleSeed::addSkill);
         users.add(jAppleSeed);
+    }
+
+    private List<SkillCategory> getDefaultSkills() {
+        List<SkillCategory> defaultSkills = new ArrayList<>();
+        SkillCategory passing = new SkillCategory("Passing");
+        passing.addSkill(new Skill("Standard", 5));
+        passing.addSkill(new Skill("Spin", 1));
+        passing.addSkill(new Skill("Pop", 5));
+        passing.setComment("Passing is excellent but could be better.");
+        defaultSkills.add(passing);
+
+        SkillCategory tackling = new SkillCategory("Tackling");
+        tackling.addSkill(new Skill("Front", 3));
+        tackling.addSkill(new Skill("Rear", 5));
+        tackling.addSkill(new Skill("Side", 4));
+        tackling.addSkill(new Skill("Scrabble", 5));
+        passing.setComment("Especially good at tackling from the rear.");
+        defaultSkills.add(tackling);
+
+        SkillCategory kicking = new SkillCategory("Kicking");
+        kicking.addSkill(new Skill("Drop", 5));
+        kicking.addSkill(new Skill("Punt", 5));
+        kicking.addSkill(new Skill("Grubber", 5));
+        kicking.addSkill(new Skill("Goal", 2));
+        kicking.setComment("Rubbish at goals.");
+        defaultSkills.add(kicking);
+        return defaultSkills;
     }
 
     public void register(User user) {
