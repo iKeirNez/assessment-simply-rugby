@@ -11,17 +11,17 @@
 <c:import url="/WEB-INF/includes/navbar.jsp" />
 <div class="container">
     <div class="row row-top-padding">
-        <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+        <div class="col-sm-6 col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-header">
                     <strong>Register a new account</strong>
                 </div>
-                <div class="panel-body">
+                <div class="card-block">
                     <form method="post" action="">
                         <input type="hidden" name="redirect_to" value="${fn:escapeXml(param.redirect_to)}" />
                         <fieldset>
                             <div class="row">
-                                <div class="col-sm-12 col-md-10  col-md-offset-1 ">
+                                <div class="col-sm-12 col-md-10 mx-auto">
                                     <c:if test="${not empty errors.overall}">
                                         <div class="alert alert-danger">
                                                 ${errors.overall}
@@ -35,7 +35,7 @@
 
                                         <div class="input-group">
                                         <span class="input-group-addon">
-                                            <i class="glyphicon glyphicon-user"></i>
+                                            <i class="fa fa-user"></i>
                                         </span>
                                             <input class="form-control" placeholder="Username" name="username"
                                                    type="text" value="${param.username}" autofocus>
@@ -49,7 +49,7 @@
 
                                         <div class="input-group">
                                         <span class="input-group-addon">
-                                            <i class="glyphicon glyphicon-font"></i>
+                                            <i class="fa fa-font"></i>
                                         </span>
                                             <input class="form-control" placeholder="First name" name="first_name"
                                                    type="text" value="${param.first_name}">
@@ -63,7 +63,7 @@
 
                                         <div class="input-group">
                                         <span class="input-group-addon">
-                                            <i class="glyphicon glyphicon-font"></i>
+                                            <i class="fa fa-font"></i>
                                         </span>
                                             <input class="form-control" placeholder="Last name" name="last_name"
                                                    type="text" value="${param.last_name}">
@@ -77,7 +77,7 @@
 
                                         <div class="input-group">
                                         <span class="input-group-addon">
-                                            <i class="glyphicon glyphicon-lock"></i>
+                                            <i class="fa fa-key"></i>
                                         </span>
                                             <input class="form-control" placeholder="Password" name="password"
                                                    type="password">

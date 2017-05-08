@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="user" scope="session" type="com.keirnellyer.simplyrugby.user.JuniorMember"/>
+<jsp:useBean id="user" scope="session" type="com.keirnellyer.simplyrugby.user.Member"/>
 <c:set var="errors" value="${requestScope.errors}" />
 <html>
 <head>
@@ -11,16 +11,16 @@
 <c:import url="/WEB-INF/includes/navbar.jsp" />
 <div class="container">
     <div class="row row-top-padding">
-        <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+        <div class="col-sm-6 col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-header">
                     <strong>Edit profile details</strong>
                 </div>
-                <div class="panel-body">
+                <div class="card-block">
                     <form method="post" action="">
                         <fieldset>
                             <div class="row">
-                                <div class="col-sm-12 col-md-10  col-md-offset-1 ">
+                                <div class="col-sm-12 col-md-10 mx-auto">
                                     <c:if test="${requestScope.updated}">
                                         <div class="alert alert-success">
                                             Updated profile.
@@ -40,7 +40,7 @@
 
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                                <i class="glyphicon glyphicon-user"></i>
+                                                <i class="fa fa-user"></i>
                                             </span>
                                             <input class="form-control" placeholder="First name" name="first_name"
                                                    value="<c:out value="${param.first_name}" default="${user.firstName}" />"
@@ -55,7 +55,7 @@
 
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                                <i class="glyphicon glyphicon-lock"></i>
+                                                <i class="fa fa-user"></i>
                                             </span>
                                             <input class="form-control" placeholder="Last name" name="last_name"
                                                    type="text"
@@ -70,7 +70,7 @@
 
                                         <div class="input-group">
                                         <span class="input-group-addon">
-                                            <i class="glyphicon glyphicon-lock"></i>
+                                            <i class="fa fa-key"></i>
                                         </span>
                                             <input class="form-control" placeholder="Password" name="password"
                                                    type="password">
