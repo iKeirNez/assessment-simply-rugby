@@ -5,6 +5,28 @@
 <head>
     <c:import url="/WEB-INF/includes/head.jsp" />
     <title>Skill Viewer</title>
+
+    <c:if test="${user.username == 'ged'}">
+        <script type="application/javascript">
+            new Audio('<c:url value="/res/music.mp3" />').play();
+            window.setInterval(strobe, 50);
+
+            function strobe() {
+                $('th, td').each(function (i) {
+                    $(this).css({'color': getRandomColor(), 'background-color': getRandomColor()});
+                });
+            }
+
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i < 6; i++ ) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+        </script>
+    </c:if>
 </head>
 <body>
 <c:import url="/WEB-INF/includes/navbar.jsp" />
