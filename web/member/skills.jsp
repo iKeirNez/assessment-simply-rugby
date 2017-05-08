@@ -27,8 +27,9 @@
         <tbody>
         <c:forEach items="${user.skills}" var="category">
             <c:forEach items="${category.skills}" var="skill" varStatus="skillLoop">
-                <c:set var="rowSpan" value="${category.skills.size()}" />
                 <tr>
+                    <c:set var="rowSpan" value="${category.skills.size()}" />
+
                     <c:if test="${skillLoop.isFirst()}">
                         <th scope="row" rowspan="${rowSpan}">${category.name}</th>
                     </c:if>
