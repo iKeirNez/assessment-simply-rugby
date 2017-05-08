@@ -1,35 +1,24 @@
 package com.keirnellyer.simplyrugby.skill;
 
 public class Skill {
-    private final SkillCategory category;
-    private final String type;
-    private int value = 0;
-    private String comment = null;
+    private final String name;
+    private int value;
 
-    public Skill(SkillCategory category, String type) {
-        this.category = category;
-        this.type = type;
+    public Skill(String type) {
+        this(type, 1);
     }
 
-    public Skill(SkillCategory category, String type, int value) {
-        this.category = category;
-        this.type = type;
+    public Skill(String type, int value) {
+        if (value < 1 || value > 5) {
+            throw new IllegalArgumentException("Value must be between 1 and 5.");
+        }
+
+        this.name = type;
         this.value = value;
     }
 
-    public Skill(SkillCategory category, String type, int value, String comment) {
-        this.category = category;
-        this.type = type;
-        this.value = value;
-        this.comment = comment;
-    }
-
-    public SkillCategory getCategory() {
-        return category;
-    }
-
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
     public int getValue() {
@@ -40,11 +29,4 @@ public class Skill {
         this.value = value;
     }
 
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
 }

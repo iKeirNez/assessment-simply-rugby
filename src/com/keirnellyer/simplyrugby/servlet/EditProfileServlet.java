@@ -1,6 +1,6 @@
 package com.keirnellyer.simplyrugby.servlet;
 
-import com.keirnellyer.simplyrugby.user.JuniorMember;
+import com.keirnellyer.simplyrugby.user.Member;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,7 +34,7 @@ public class EditProfileServlet extends HttpServlet {
         }
 
         if (errors.isEmpty()) {
-            JuniorMember member = (JuniorMember) req.getSession(false).getAttribute("user");
+            Member member = (Member) req.getSession(false).getAttribute("user");
             member.setFirstName(firstName);
             member.setLastName(lastName);
 

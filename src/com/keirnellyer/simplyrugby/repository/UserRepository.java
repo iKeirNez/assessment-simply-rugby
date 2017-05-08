@@ -1,7 +1,6 @@
 package com.keirnellyer.simplyrugby.repository;
 
 import com.keirnellyer.simplyrugby.skill.Skill;
-import com.keirnellyer.simplyrugby.skill.SkillCategory;
 import com.keirnellyer.simplyrugby.user.Administrator;
 import com.keirnellyer.simplyrugby.user.JuniorMember;
 import com.keirnellyer.simplyrugby.user.SeniorMember;
@@ -24,18 +23,17 @@ public class UserRepository {
         users.add(admin);
 
         List<Skill> defaultSkills = new ArrayList<>();
-        defaultSkills.add(new Skill(SkillCategory.PASSING, "Standard", 5));
-        defaultSkills.add(new Skill(SkillCategory.PASSING, "Spin", 1));
-        defaultSkills.add(new Skill(SkillCategory.PASSING, "Pop", 5));
-        defaultSkills.add(new Skill(SkillCategory.TACKLING, "Front", 3));
-        defaultSkills.add(new Skill(SkillCategory.TACKLING, "Rear", 5));
-        defaultSkills.add(new Skill(SkillCategory.TACKLING, "Side", 4));
-        defaultSkills.add(new Skill(SkillCategory.TACKLING, "Scrabble", 5));
-        defaultSkills.add(new Skill(SkillCategory.KICKING, "Drop", 5));
-        defaultSkills.add(new Skill(SkillCategory.KICKING, "Punt", 5));
-        defaultSkills.add(new Skill(SkillCategory.KICKING, "Grubber", 5));
-        defaultSkills.add(new Skill(SkillCategory.KICKING, "Goal", 2));
-
+        defaultSkills.add(new Skill("Standard", 5));
+        defaultSkills.add(new Skill("Spin", 1));
+        defaultSkills.add(new Skill("Pop", 5));
+        defaultSkills.add(new Skill("Front", 3));
+        defaultSkills.add(new Skill("Rear", 5));
+        defaultSkills.add(new Skill("Side", 4));
+        defaultSkills.add(new Skill("Scrabble", 5));
+        defaultSkills.add(new Skill("Drop", 5));
+        defaultSkills.add(new Skill("Punt", 5));
+        defaultSkills.add(new Skill("Grubber", 5));
+        defaultSkills.add(new Skill("Goal", 2));
 
         JuniorMember jSmith = new JuniorMember("jsmith");
         jSmith.setPassword("password");

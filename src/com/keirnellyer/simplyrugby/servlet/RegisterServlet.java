@@ -2,6 +2,7 @@ package com.keirnellyer.simplyrugby.servlet;
 
 import com.keirnellyer.simplyrugby.repository.UserRepository;
 import com.keirnellyer.simplyrugby.user.JuniorMember;
+import com.keirnellyer.simplyrugby.user.Member;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -56,7 +57,7 @@ public class RegisterServlet extends HttpServlet {
         }
 
         if (errors.isEmpty()) {
-            JuniorMember member = new JuniorMember(username);
+            Member member = new JuniorMember(username);
             member.setPassword(password);
             member.setFirstName(firstName);
             member.setLastName(lastName);
