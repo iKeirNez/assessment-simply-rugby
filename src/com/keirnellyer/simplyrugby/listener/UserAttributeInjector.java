@@ -19,23 +19,17 @@ public class UserAttributeInjector implements HttpSessionAttributeListener {
         if (event.getName().equals("user")) {
             HttpSession session = event.getSession();
             User user = (User) event.getValue();
-            String displayName;
             String userHome;
 
             if (user instanceof Member) {
-                Member member = (Member) user;
-                displayName = member.getFirstName();
                 userHome = "/member";
 
                 // only senior members can edit profile
                 session.setAttribute("canEditProfile", user instanceof SeniorMember);
             } else {
-                Administrator administrator = (Administrator) user;
                 userHome = "/admin";
-                displayName = "Administrator";
             }
 
-            session.setAttribute("userDisplayName", displayName);
             session.setAttribute("userHome", userHome);
         }
     }

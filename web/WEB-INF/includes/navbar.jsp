@@ -1,51 +1,48 @@
 <%--@elvariable id="user" type="com.keirnellyer.simplyrugby.user.User"--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="keirtags" uri="http://keirnellyer.com/jsp/tlds/keirTags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="<c:url value="/"/>">${applicationScope.brand}</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <!-- TODO: Apply class 'active' for active links -->
-                <c:if test="${not empty user}">
-                    <li><a href="<c:url value="${sessionScope.userHome}"/>">Home</a></li>
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar"
+            aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="<c:url value="/"/>">${applicationScope.brand}</a>
 
-                    <c:if test="${not empty user.navigation}">
-                        <c:forEach items="${user.navigation.items}" var="navElement">
-                            <li><a href="<c:url value="${navElement.location}" />">${navElement.display}</a></li>
-                        </c:forEach>
-                    </c:if>
+    <div id="navbar" class="collapse navbar-collapse">
+        <div class="navbar-nav mr-auto">
+            <!-- TODO: Apply class 'active' for active links -->
+            <c:if test="${not empty user}">
+                <a class="nav-item nav-link" href="<c:url value="${sessionScope.userHome}"/>">Home</a>
+
+                <c:if test="${not empty user.navigation}">
+                    <c:forEach items="${user.navigation.items}" var="navElement">
+                        <a class="nav-item nav-link" href="<c:url value="${navElement.location}" />">
+                                ${navElement.display}</a>
+                    </c:forEach>
                 </c:if>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <c:choose>
-                    <c:when test="${not empty user}">
-                        <li>
-                            <c:choose>
-                                <c:when test="${sessionScope.canEditProfile}">
-                                    <a href="<c:url value="/member/edit_profile"/>">${sessionScope.userDisplayName}</a>
-                                </c:when>
-                                <c:otherwise>
-                                    <span class="navbar-text">${sessionScope.userDisplayName}</span>
-                                </c:otherwise>
-                            </c:choose>
-                        </li>
-                        <li><a href="<c:url value="/logout"/>">Logout</a></li>
-                    </c:when>
-                    <c:otherwise>
-                        <li><a href="<c:url value="/register" />">Register</a></li>
-                        <li><a href="<c:url value="/login"/>">Login</a></li>
-                    </c:otherwise>
-                </c:choose>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
+            </c:if>
+        </div>
+        <div class="navbar-nav">
+            <c:choose>
+                <c:when test="${not empty user}">
+                    <c:choose>
+                        <c:when test="${sessionScope.canEditProfile}">
+                            <a class="nav-item nav-link" href="<c:url value="/member/edit_profile"/>">
+                                <keirtags:displayName user="${sessionScope.user}" />
+                            </a>
+                        </c:when>
+                        <c:otherwise>
+                            <span class="navbar-text"><keirtags:displayName user="${sessionScope.user}" /></span>
+                        </c:otherwise>
+                    </c:choose>
+                    <a class="nav-item nav-link" href="<c:url value="/logout"/>">Logout</a>
+                </c:when>
+                <c:otherwise>
+                    <a class="nav-item nav-link" href="<c:url value="/register" />">Register</a>
+                    <a class="nav-item nav-link" href="<c:url value="/login"/>">Login</a>
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </div><!--/.nav-collapse -->
 </nav>

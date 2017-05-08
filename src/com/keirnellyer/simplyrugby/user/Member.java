@@ -19,13 +19,7 @@ public abstract class Member extends User {
 
     private void initializeNavBar() {
         Navigation navigation = new Navigation();
-
-        NavigationElement first = new NavigationElement("Member Thing 1", "/");
-        navigation.addItem(first);
-
-        NavigationElement second = new NavigationElement("Member Thing 2", "/");
-        navigation.addItem(second);
-
+        navigation.addItem(new NavigationElement("Skill Tracking", "/member/skills.jsp"));
         setNavigation(navigation);
     }
 
