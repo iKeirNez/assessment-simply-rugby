@@ -1,5 +1,6 @@
 <%--@elvariable id="user" type="com.keirnellyer.simplyrugby.user.User"--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="keirtags" uri="http://keirnellyer.com/jsp/tlds/keirTags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar"
@@ -28,11 +29,11 @@
                     <c:choose>
                         <c:when test="${sessionScope.canEditProfile}">
                             <a class="nav-item nav-link" href="<c:url value="/member/edit_profile"/>">
-                                    ${sessionScope.userDisplayName}
+                                <keirtags:displayName user="${sessionScope.user}" />
                             </a>
                         </c:when>
                         <c:otherwise>
-                            <span class="navbar-text">${sessionScope.userDisplayName}</span>
+                            <span class="navbar-text"><keirtags:displayName user="${sessionScope.user}" /></span>
                         </c:otherwise>
                     </c:choose>
                     <a class="nav-item nav-link" href="<c:url value="/logout"/>">Logout</a>

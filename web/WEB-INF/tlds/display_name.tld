@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+    <description>User Display Name Printer</description>
+    <tlib-version>0.1</tlib-version>
+    <short-name>keirTags</short-name>
+    <uri>http://keirnellyer.com/jsp/tlds/keirTags</uri>
+    <tag>
+        <name>displayName</name>
+        <tag-class>com.keirnellyer.simplyrugby.tag.DisplayNameTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>user</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>com.keirnellyer.simplyrugby.user.User</type>
+        </attribute>
+    </tag>
+</taglib>
