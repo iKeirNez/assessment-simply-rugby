@@ -35,7 +35,7 @@
 
                                         <div class="input-group">
                                         <span class="input-group-addon">
-                                            <i class="fa fa-user"></i>
+                                            <i class="fa fa-fw fa-user"></i>
                                         </span>
                                             <input class="form-control" placeholder="Username" name="username"
                                                    type="text" value="${param.username}" autofocus>
@@ -49,7 +49,7 @@
 
                                         <div class="input-group">
                                         <span class="input-group-addon">
-                                            <i class="fa fa-font"></i>
+                                            <i class="fa fa-fw fa-font"></i>
                                         </span>
                                             <input class="form-control" placeholder="First name" name="first_name"
                                                    type="text" value="${param.first_name}">
@@ -63,7 +63,7 @@
 
                                         <div class="input-group">
                                         <span class="input-group-addon">
-                                            <i class="fa fa-font"></i>
+                                            <i class="fa fa-fw fa-font"></i>
                                         </span>
                                             <input class="form-control" placeholder="Last name" name="last_name"
                                                    type="text" value="${param.last_name}">
@@ -77,7 +77,7 @@
 
                                         <div class="input-group">
                                         <span class="input-group-addon">
-                                            <i class="fa fa-key"></i>
+                                            <i class="fa fa-fw fa-key"></i>
                                         </span>
                                             <input class="form-control" placeholder="Password" name="password"
                                                    type="password">

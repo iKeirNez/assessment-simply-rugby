@@ -40,7 +40,7 @@
 
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                                <i class="fa fa-user"></i>
+                                                <i class="fa fa-fw fa-user"></i>
                                             </span>
                                             <input class="form-control" placeholder="First name" name="first_name"
                                                    value="<c:out value="${param.first_name}" default="${user.firstName}" />"
@@ -55,7 +55,7 @@
 
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                                <i class="fa fa-user"></i>
+                                                <i class="fa fa-fw fa-user"></i>
                                             </span>
                                             <input class="form-control" placeholder="Last name" name="last_name"
                                                    type="text"
@@ -70,7 +70,7 @@
 
                                         <div class="input-group">
                                         <span class="input-group-addon">
-                                            <i class="fa fa-key"></i>
+                                            <i class="fa fa-fw fa-key"></i>
                                         </span>
                                             <input class="form-control" placeholder="Password" name="password"
                                                    type="password">
