@@ -54,7 +54,7 @@ public class UserRepository {
         tackling.addSkill(new Skill("Rear", 5));
         tackling.addSkill(new Skill("Side", 4));
         tackling.addSkill(new Skill("Scrabble", 5));
-        passing.setComment("Especially good at tackling from the rear.");
+        tackling.setComment("Especially good at tackling from the rear.");
         defaultSkills.add(tackling);
 
         SkillCategory kicking = new SkillCategory("Kicking");
