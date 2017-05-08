@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="user" scope="session" type="com.keirnellyer.simplyrugby.user.JuniorMember"/>
+<jsp:useBean id="user" scope="session" type="com.keirnellyer.simplyrugby.user.Member"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
