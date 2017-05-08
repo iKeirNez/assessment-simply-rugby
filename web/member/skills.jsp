@@ -10,7 +10,7 @@
 <c:import url="/WEB-INF/includes/navbar.jsp" />
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-sm-12 col-md-10 col-lg-8">
+        <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
             <table class="table table-bordered table-responsive skills-table">
                 <thead>
                 <tr>
@@ -39,11 +39,24 @@
                             <td>${skill.name}</td>
 
                             <c:forEach begin="1" end="5" varStatus="loop">
-                                <td>
-                                    <c:if test="${skill.value == loop.index}">
-                                        *
-                                    </c:if>
-                                </td>
+                                <c:choose>
+                                    <c:when test="${skill.value == loop.index}">
+                                        <c:choose>
+                                            <c:when test="${skill.value >= 4}">
+                                                <td class="bg-success"></td>
+                                            </c:when>
+                                            <c:when test="${skill.value >= 2}">
+                                                <td class="bg-warning"></td>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <td class="bg-danger"></td>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <td></td>
+                                    </c:otherwise>
+                                </c:choose>
                             </c:forEach>
 
                             <c:if test="${skillLoop.isFirst()}">
