@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        userRepository = ((UserRepository) getServletContext().getAttribute("user_repository"));
+        userRepository = ((UserRepository) getServletContext().getAttribute("userRepository"));
     }
 
     @Override

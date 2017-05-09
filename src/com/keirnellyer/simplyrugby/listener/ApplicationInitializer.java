@@ -14,7 +14,7 @@ public class ApplicationInitializer implements ServletContextListener {
         ServletContext context = event.getServletContext();
         context.setAttribute("brand", "SimplyRugby");
         context.setAttribute("author", "Keir Nellyer");
-        context.setAttribute("user_repository", new UserRepository());
+        context.setAttribute("userRepository", new UserRepository());
     }
 
     @Override
