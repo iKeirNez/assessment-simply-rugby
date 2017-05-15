@@ -13,11 +13,11 @@
         <div class="navbar-nav mr-auto">
             <!-- TODO: Apply class 'active' for active links -->
             <c:if test="${not empty user}">
-                <a class="nav-item nav-link" href="<c:url value="${sessionScope.userHome}"/>">Home</a>
+                <a class="navbar-text nav-item nav-link" href="<c:url value="${sessionScope.userHome}"/>">Home</a>
 
                 <c:if test="${not empty user.navigation}">
                     <c:forEach items="${user.navigation.items}" var="navElement">
-                        <a class="nav-item nav-link" href="<c:url value="${navElement.location}" />">
+                        <a class="navbar-text nav-item nav-link" href="<c:url value="${navElement.location}" />">
                                 ${navElement.display}</a>
                     </c:forEach>
                 </c:if>
@@ -28,7 +28,7 @@
                 <c:when test="${not empty user}">
                     <c:choose>
                         <c:when test="${sessionScope.canEditProfile}">
-                            <a class="nav-item nav-link" href="<c:url value="/member/edit_profile"/>">
+                            <a class="navbar-text nav-item nav-link" href="<c:url value="/member/edit_profile"/>">
                                 <keirtags:displayName user="${sessionScope.user}" />
                             </a>
                         </c:when>
@@ -36,11 +36,11 @@
                             <span class="navbar-text"><keirtags:displayName user="${sessionScope.user}" /></span>
                         </c:otherwise>
                     </c:choose>
-                    <a class="nav-item nav-link" href="<c:url value="/logout"/>">Logout</a>
+                    <a class="navbar-text nav-item nav-link" href="<c:url value="/logout"/>">Logout</a>
                 </c:when>
                 <c:otherwise>
-                    <a class="nav-item nav-link" href="<c:url value="/register" />">Register</a>
-                    <a class="nav-item nav-link" href="<c:url value="/login"/>">Login</a>
+                    <a class="navbar-text nav-item nav-link" href="<c:url value="/register" />">Register</a>
+                    <a class="navbar-text nav-item nav-link" href="<c:url value="/login"/>">Login</a>
                 </c:otherwise>
             </c:choose>
         </div>
