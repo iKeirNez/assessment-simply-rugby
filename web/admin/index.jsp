@@ -9,7 +9,7 @@
 <body>
 <c:import url="/WEB-INF/includes/navbar.jsp" />
 <div class="container">
-    <p>Welcome to the admin dashboard, ${sessionScope.userDisplayName}</p>
+    <p>Welcome to the admin dashboard, <keirtags:displayName user="${user}" /></p>
 </div>
 <c:import url="/WEB-INF/includes/footer.jsp" />
 </body>

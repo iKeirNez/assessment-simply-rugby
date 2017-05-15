@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="user" scope="session" type="com.keirnellyer.simplyrugby.user.User"/>
+<%@ taglib prefix="keirtags" uri="http://keirnellyer.com/jsp/tlds/keirTags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -9,7 +9,7 @@
 <body>
 <c:import url="/WEB-INF/includes/navbar.jsp" />
 <div class="container">
-    <p>Welcome to the member dashboard, ${sessionScope.userDisplayName}</p>
+    <p>Welcome to the member dashboard, <keirtags:displayName user="${user}" /></p>
 </div>
 <c:import url="/WEB-INF/includes/footer.jsp" />
 </body>
