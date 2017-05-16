@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
         }
 
         if (errors.isEmpty()) {
-            Optional<User> userOptional = userRepository.findByCredentials(username, password);
+            Optional<User> userOptional = userRepository.getByCredentials(username, password);
 
             if (userOptional.isPresent()) {
                 User user = userOptional.get();

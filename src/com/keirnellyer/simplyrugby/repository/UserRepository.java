@@ -23,20 +23,18 @@ public class UserRepository {
         admin.setPassword("admin");
         users.add(admin);
 
-        List<SkillCategory> defaultSkills = getDefaultSkills();
-
         JuniorMember jSmith = new JuniorMember("jsmith");
         jSmith.setPassword("password");
         jSmith.setFirstName("John");
         jSmith.setLastName("Smith");
-        defaultSkills.forEach(jSmith::addSkill);
+        getDefaultSkills().forEach(jSmith::addSkill);
         users.add(jSmith);
 
         SeniorMember gMullen = new SeniorMember("ged");
         gMullen.setPassword("password");
         gMullen.setFirstName("Ged");
         gMullen.setLastName("Mullen");
-        defaultSkills.forEach(gMullen::addSkill);
+        getDefaultSkills().forEach(gMullen::addSkill);
         users.add(gMullen);
     }
 
@@ -67,6 +65,10 @@ public class UserRepository {
         return defaultSkills;
     }
 
+    public List<User> getAllUsers() {
+        return new ArrayList<>(users);
+    }
+
     public void register(User user) {
         users.add(user);
     }
@@ -76,10 +78,16 @@ public class UserRepository {
                 .anyMatch(user -> user.getUsername().equalsIgnoreCase(username));
     }
 
-    public Optional<User> findByCredentials(String username, String password) {
+    public Optional<User> getByCredentials(String username, String password) {
         return users.stream()
                 .filter(user -> user.getUsername().equalsIgnoreCase(username))
                 .filter(user -> user.getPassword().equals(password))
+                .findFirst();
+    }
+
+    public Optional<User> getByUsername(String username) {
+        return users.stream()
+                .filter(user -> user.getUsername().equalsIgnoreCase(username))
                 .findFirst();
     }
 }

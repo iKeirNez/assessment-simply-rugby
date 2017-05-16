@@ -7,6 +7,10 @@
     vertical-align: middle !important;
 }
 
+td.comment, .comment textarea {
+    height: 100%;
+}
+
 /* Navbar header styles
 -------------------------------------------------- */
 

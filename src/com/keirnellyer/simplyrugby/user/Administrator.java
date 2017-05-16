@@ -13,11 +13,8 @@ public class Administrator extends User {
     private void initializeNavBar() {
         Navigation navigation = new Navigation();
 
-        NavigationElement first = new NavigationElement("Admin Thing 1", "/");
+        NavigationElement first = new NavigationElement("Edit Skills", "/admin/edit_skills");
         navigation.addItem(first);
-
-        NavigationElement second = new NavigationElement("Admin Thing 2", "/");
-        navigation.addItem(second);
 
         setNavigation(navigation);
     }
