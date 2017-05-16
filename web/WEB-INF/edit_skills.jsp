@@ -11,11 +11,11 @@
 <c:import url="/WEB-INF/includes/navbar.jsp" />
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12 col-md-1">
+        <div class="col-sm-12 col-md-2">
             <%--JS function submits this form when the select element changes--%>
             <form action="" method="get">
                 <div class="form-group">
-                    <label for="user_selector">User:</label>
+                    <label for="user_selector">User</label>
                     <select class="form-control" id="user_selector" name="target">
                         <c:if test="${empty targetUser}">
                             <option disabled selected>Please select a user</option>
@@ -30,7 +30,7 @@
         </div>
 
         <c:if test="${not empty targetUser}">
-            <div class="col-sm-12 col-md-8 col-lg-8 col-xl-6 mx-auto">
+            <div class="col-sm-12 col-md-8 col-lg-8 col-xl-6 offset-md-1">
                 <form action="" method="post">
                     <div class="row">
                         <div class="table-responsive">
