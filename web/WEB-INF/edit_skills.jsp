@@ -31,7 +31,7 @@
 
         <c:if test="${not empty targetUser}">
             <div class="col-sm-12 col-md-8 col-lg-8 col-xl-6 mx-auto">
-                <form action="" method="post" style="width: auto">
+                <form action="" method="post">
                     <div class="row">
                         <div class="table-responsive">
                             <table class="table table-bordered skills-table text-center">
@@ -82,8 +82,10 @@
                         </div>
                     </div>
 
-                    <div class="row float-md-right">
-                        <button type="submit" class="btn btn-success">Save changes</button>
+                    <div class="clearfix">
+                        <div class="row float-md-right">
+                            <button type="submit" class="btn btn-success">Save changes</button>
+                        </div>
                     </div>
                 </form>
             </div>
