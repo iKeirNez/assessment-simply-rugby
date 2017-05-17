@@ -4,7 +4,7 @@ import com.keirnellyer.simplyrugby.navbar.Navigation;
 
 public abstract class User {
     private final String username;
-    private String password;
+    private String password = null;
 
     private Navigation navigation = null;
 
