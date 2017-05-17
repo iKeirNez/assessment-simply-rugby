@@ -11,26 +11,30 @@
 <c:import url="/WEB-INF/includes/navbar.jsp" />
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12 col-md-2">
-            <%--JS function submits this form when the select element changes--%>
-            <form action="" method="get">
-                <div class="form-group">
-                    <label for="user_selector">User</label>
-                    <select class="form-control" id="user_selector" name="target">
-                        <c:if test="${empty targetUser}">
-                            <option disabled selected>Please select a user</option>
-                        </c:if>
+        <div class="col-sm-4 col-md-3 col-lg-2 push-sm-8 push-md-9 push-lg-10 pb-3">
+            <div class="card card-inverse card-info text-center">
+                <div class="card-block">
+                    <h5 class="card-title"><label for="user_selector">User Selection</label></h5>
+                    <form action="" method="get">
+                        <div class="form-group">
+                            <%--JS function submits this form when the select element changes--%>
+                            <select class="form-control" id="user_selector" name="target">
+                                <c:if test="${empty targetUser}">
+                                    <option disabled selected>Please select a user</option>
+                                </c:if>
 
-                        <c:forEach var="u" items="${availableTargets}">
-                            <option value="${u.username}" <c:if test="${u == targetUser}">selected</c:if>>${u.firstName} ${u.lastName}</option>
-                        </c:forEach>
-                    </select>
+                                <c:forEach var="u" items="${availableTargets}">
+                                    <option value="${u.username}" <c:if test="${u == targetUser}">selected</c:if>>${u.firstName} ${u.lastName}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
 
         <c:if test="${not empty targetUser}">
-            <div class="col-sm-12 col-md-8 col-lg-8 col-xl-6 offset-md-1">
+            <div class="col-sm-12 col-md-8 col-lg-8 col-xl-6 pull-md-2 pull-lg-0">
                 <form action="" method="post">
                     <div class="row">
                         <div class="table-responsive">
@@ -83,8 +87,8 @@
                     </div>
 
                     <div class="clearfix">
-                        <div class="row float-md-right">
-                            <button type="submit" class="btn btn-success">Save changes</button>
+                        <div class="row float-sm-right">
+                            <button type="submit" class="btn btn-block btn-success">Save changes</button>
                         </div>
                     </div>
                 </form>
