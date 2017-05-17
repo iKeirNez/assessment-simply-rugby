@@ -79,7 +79,7 @@
                             </c:forEach>
                             <c:param name="guest" value="true" />
                         </c:url>
-                        <span>Don't have an account? <a href="${registerURL}">Register now</a>
+                        <span>Don't have an account? <br /><a href="${registerURL}">Register now</a>
                             or <a href="${guestURL}">login as guest</a>.</span>
                     </div>
                 </div>
