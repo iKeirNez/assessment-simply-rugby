@@ -11,7 +11,7 @@ import java.io.IOException;
 
 import static com.keirnellyer.simplyrugby.util.SessionUtil.*;
 
-@WebFilter({"/member/*", "/admin/*"})
+@WebFilter({"/member/*", "/admin/*", "/guest/*"})
 public class AccessControlFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -32,6 +32,9 @@ public class AccessControlFilter implements Filter {
                 httpRequest.getRequestDispatcher("/WEB-INF/error/access-denied.jsp").forward(request, response);
             } else if (servletPath.startsWith("/member") && !isMember(user)) {
                 httpRequest.setAttribute("customMessage", "Try using a member account instead.");
+                httpRequest.getRequestDispatcher("/WEB-INF/error/access-denied.jsp").forward(request, response);
+            } else if (servletPath.startsWith("/guest") && !isGuest(user)) {
+                httpRequest.setAttribute("customMessage", "Guest users cannot do this.");
                 httpRequest.getRequestDispatcher("/WEB-INF/error/access-denied.jsp").forward(request, response);
             } else {
                 chain.doFilter(httpRequest, httpResponse);

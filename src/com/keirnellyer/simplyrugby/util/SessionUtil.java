@@ -1,6 +1,7 @@
 package com.keirnellyer.simplyrugby.util;
 
 import com.keirnellyer.simplyrugby.user.Administrator;
+import com.keirnellyer.simplyrugby.user.Guest;
 import com.keirnellyer.simplyrugby.user.Member;
 import com.keirnellyer.simplyrugby.user.User;
 
@@ -22,6 +23,10 @@ public class SessionUtil {
 
     public static boolean isMember(User user) {
         return user instanceof Member;
+    }
+
+    public static boolean isGuest(User user) {
+        return user instanceof Guest;
     }
 
     public static void redirectLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
