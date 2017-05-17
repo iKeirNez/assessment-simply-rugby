@@ -2,10 +2,7 @@ package com.keirnellyer.simplyrugby.repository;
 
 import com.keirnellyer.simplyrugby.skill.Skill;
 import com.keirnellyer.simplyrugby.skill.SkillCategory;
-import com.keirnellyer.simplyrugby.user.Administrator;
-import com.keirnellyer.simplyrugby.user.JuniorMember;
-import com.keirnellyer.simplyrugby.user.SeniorMember;
-import com.keirnellyer.simplyrugby.user.User;
+import com.keirnellyer.simplyrugby.user.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +33,9 @@ public class UserRepository {
         gMullen.setLastName("Mullen");
         getDefaultSkills().forEach(gMullen::addSkill);
         users.add(gMullen);
+
+        Guest guest = new Guest("guest");
+        users.add(guest);
     }
 
     private List<SkillCategory> getDefaultSkills() {
@@ -81,7 +81,8 @@ public class UserRepository {
     public Optional<User> getByCredentials(String username, String password) {
         return users.stream()
                 .filter(user -> user.getUsername().equalsIgnoreCase(username))
-                .filter(user -> user.getPassword().equals(password))
+                // check if user password equals input password, or if not set, check input password is ""
+                .filter(user -> user.getPassword().map(p -> p.equals(password)).orElse(password.isEmpty()))
                 .findFirst();
     }
 

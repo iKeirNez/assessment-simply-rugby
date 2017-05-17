@@ -2,6 +2,8 @@ package com.keirnellyer.simplyrugby.user;
 
 import com.keirnellyer.simplyrugby.navbar.Navigation;
 
+import java.util.Optional;
+
 public abstract class User {
     private final String username;
     private String password = null;
@@ -16,8 +18,8 @@ public abstract class User {
         return username;
     }
 
-    public String getPassword() {
-        return password;
+    public Optional<String> getPassword() {
+        return Optional.ofNullable(password);
     }
 
     public void setPassword(String password) {
