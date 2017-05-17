@@ -13,30 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @WebServlet("/admin/edit_skills")
-public class EditSkillsServlet extends HttpServlet {
-
-    private UserRepository userRepository;
-
-    @Override
-    public void init() throws ServletException {
-        userRepository = (UserRepository) getServletContext().getAttribute("userRepository");
-    }
+public class EditSkillsServlet extends TargetableServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Member targetUser = getTargetUser(req);
+        super.doGet(req, resp);
 
-        if (targetUser != null) {
-            req.setAttribute("targetUser", targetUser);
-        }
-
-        req.setAttribute("availableTargets", getAvailableTargets());
         req.getRequestDispatcher("/WEB-INF/edit_skills.jsp").forward(req, resp);
     }
 
@@ -69,31 +54,5 @@ public class EditSkillsServlet extends HttpServlet {
         req.setAttribute("availableTargets", getAvailableTargets());
         req.setAttribute("errors", errors);
         req.getRequestDispatcher("/WEB-INF/edit_skills.jsp").forward(req, resp);
-    }
-
-    private List<Member> getAvailableTargets() {
-        return userRepository.getAllUsers().stream()
-                .filter(u -> u instanceof Member)
-                .map(u -> (Member) u)
-                .collect(Collectors.toList());
-    }
-
-    private Member getTargetUser(HttpServletRequest req) {
-        String targetStr = req.getParameter("target");
-
-        // TODO throw exceptions
-        if (targetStr != null) {
-            Optional<User> userOptional = userRepository.getByUsername(targetStr);
-
-            if (userOptional.isPresent()) {
-                User user = userOptional.get();
-
-                if (user instanceof Member) {
-                    return (Member) user;
-                }
-            }
-        }
-
-        return null;
     }
 }

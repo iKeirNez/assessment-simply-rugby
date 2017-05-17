@@ -40,10 +40,6 @@ public class LoginServlet extends HttpServlet {
             errors.put("username", "Please enter a username.");
         }
 
-        if (password == null || password.isEmpty()) {
-            errors.put("password", "Please enter a password.");
-        }
-
         if (errors.isEmpty()) {
             Optional<User> userOptional = userRepository.getByCredentials(username, password);
 
@@ -58,6 +54,11 @@ public class LoginServlet extends HttpServlet {
             } else {
                 errors.put("overall", "Incorrect username or password.");
             }
+        }
+
+        // as some users do not require a password, this check must be done last
+        if (password == null || password.isEmpty()) {
+            errors.put("password", "Please enter a password.");
         }
 
         // TODO view error messages in JSP

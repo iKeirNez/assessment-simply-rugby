@@ -80,10 +80,6 @@
 </div>
 
 <c:import url="/WEB-INF/includes/footer.jsp" />
-<script type="application/javascript">
-    $('#user_selector').change(function() {
-        $(this).closest('form').submit();
-    });
-</script>
+<script type="application/javascript" src="<c:url value="/js/target_selector.js"/>"></script>
 </body>
 </html>
