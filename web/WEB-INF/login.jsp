@@ -28,9 +28,9 @@
                                         </div>
                                     </c:if>
 
-                                    <div class="form-group <c:if test="${not empty errors.username}">has-error</c:if>">
+                                    <div class="form-group <c:if test="${not empty errors.username}">has-danger</c:if>">
                                         <c:if test="${not empty errors.username}">
-                                            <span class="help-block">${errors.username}</span>
+                                            <span class="form-text text-muted">${errors.username}</span>
                                         </c:if>
 
                                         <div class="input-group">
@@ -42,9 +42,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group <c:if test="${not empty errors.password}">has-error</c:if>">
+                                    <div class="form-group <c:if test="${not empty errors.password}">has-danger</c:if>">
                                         <c:if test="${not empty errors.password}">
-                                            <span class="help-block">${errors.password}</span>
+                                            <span class="form-text text-muted">${errors.password}</span>
                                         </c:if>
 
                                         <div class="input-group">
