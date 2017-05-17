@@ -20,7 +20,7 @@
                             <%--JS function submits this form when the select element changes--%>
                             <select class="form-control" id="user_selector" name="target">
                                 <c:if test="${empty targetUser}">
-                                    <option disabled selected>Please select a user</option>
+                                    <option disabled selected>Select a user</option>
                                 </c:if>
 
                                 <c:forEach var="u" items="${availableTargets}">
