@@ -11,9 +11,8 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
-            <c:import url="/WEB-INF/includes/skills_table.jsp">
-                <c:param name="skillsUser" value="${user}" />
-            </c:import>
+            <c:set var="targetUser" scope="request" value="${user}" />
+            <c:import url="/WEB-INF/includes/skills_table.jsp" />
         </div>
     </div>
 </div>

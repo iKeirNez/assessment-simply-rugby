@@ -1,4 +1,4 @@
-<%--@elvariable id="skillsUser" type="com.keirnellyer.simplyrugby.user.Member"--%>
+<%--@elvariable id="targetUser" type="com.keirnellyer.simplyrugby.user.Member"--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <table class="table table-bordered table-responsive skills-table">
     <thead>
@@ -16,7 +16,7 @@
     </thead>
 
     <tbody>
-    <c:forEach items="${skillsUser.skills}" var="category">
+    <c:forEach items="${targetUser.skills}" var="category">
         <c:forEach items="${category.skills}" var="skill" varStatus="skillLoop">
             <tr>
                 <c:set var="rowSpan" value="${category.skills.size()}" />

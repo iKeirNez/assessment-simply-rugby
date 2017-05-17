@@ -12,25 +12,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-4 col-md-3 col-lg-2 push-sm-8 push-md-9 push-lg-10 pb-3">
-            <div class="card card-inverse card-info text-center">
-                <div class="card-block">
-                    <h5 class="card-title"><label for="user_selector">User Selection</label></h5>
-                    <form action="" method="get">
-                        <div class="form-group">
-                            <%--JS function submits this form when the select element changes--%>
-                            <select class="form-control" id="user_selector" name="target">
-                                <c:if test="${empty targetUser}">
-                                    <option disabled selected>Select a user</option>
-                                </c:if>
-
-                                <c:forEach var="u" items="${availableTargets}">
-                                    <option value="${u.username}" <c:if test="${u == targetUser}">selected</c:if>>${u.firstName} ${u.lastName}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <c:import url="/WEB-INF/includes/user_selector.jsp" />
         </div>
 
         <c:if test="${not empty targetUser}">
