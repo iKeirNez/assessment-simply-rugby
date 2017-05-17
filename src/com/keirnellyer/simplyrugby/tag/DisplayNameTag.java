@@ -1,6 +1,7 @@
 package com.keirnellyer.simplyrugby.tag;
 
 import com.keirnellyer.simplyrugby.user.Administrator;
+import com.keirnellyer.simplyrugby.user.Guest;
 import com.keirnellyer.simplyrugby.user.Member;
 import com.keirnellyer.simplyrugby.user.User;
 
@@ -23,6 +24,8 @@ public class DisplayNameTag extends SimpleTagSupport {
             if (user instanceof Member) {
                 Member member = (Member) user;
                 displayName = member.getFirstName();
+            } else if (user instanceof Guest) {
+                displayName = "Guest";
             } else if (user instanceof Administrator) {
                 displayName = "Administrator";
             } else {
