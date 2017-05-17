@@ -27,6 +27,18 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String guestStr = req.getParameter("guest");
+
+        if (guestStr != null && !guestStr.isEmpty()) {
+            boolean guest = Boolean.parseBoolean(guestStr);
+
+            if (guest) {
+                User defaultGuest = userRepository.getDefaultGuest();
+                login(req, resp, defaultGuest);
+                return;
+            }
+        }
+
         req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
     }
 
@@ -45,11 +57,7 @@ public class LoginServlet extends HttpServlet {
 
             if (userOptional.isPresent()) {
                 User user = userOptional.get();
-                HttpSession session = req.getSession();
-                session.setAttribute("user", user);
-
-                String homeLocation = (String) session.getAttribute("userHome");
-                postLoginRedirect(req, resp, homeLocation, req.getParameter("redirect_to"));
+                login(req, resp, user);
                 return;
             } else {
                 errors.put("overall", "Incorrect username or password.");
@@ -64,6 +72,14 @@ public class LoginServlet extends HttpServlet {
         // TODO view error messages in JSP
         req.setAttribute("errors", errors);
         req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
+    }
+
+    private void login(HttpServletRequest req, HttpServletResponse resp, User user) throws IOException {
+        HttpSession session = req.getSession();
+        session.setAttribute("user", user);
+
+        String homeLocation = (String) session.getAttribute("userHome");
+        postLoginRedirect(req, resp, homeLocation, req.getParameter("redirect_to"));
     }
 
     private void postLoginRedirect(HttpServletRequest req, HttpServletResponse resp, String userHome, String redirectParam)

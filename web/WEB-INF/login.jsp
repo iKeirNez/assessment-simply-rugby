@@ -71,7 +71,15 @@
                                 <c:param name="${theParam.key}" value="${theParam.value}" />
                             </c:forEach>
                         </c:url>
-                        <span>Don't have an account? <a href="${registerURL}">Register now</a>.</span>
+                        <c:url value="/login" var="guestURL">
+                            <%-- TODO is there a built-in JSTL function to do this for us (forward params) --%>
+                            <c:forEach items="${param}" var="theParam">
+                                <c:param name="${theParam.key}" value="${theParam.value}" />
+                            </c:forEach>
+                            <c:param name="guest" value="true" />
+                        </c:url>
+                        <span>Don't have an account? <a href="${registerURL}">Register now</a>
+                            or <a href="${guestURL}">login as guest</a>.</span>
                     </div>
                 </div>
             </div>

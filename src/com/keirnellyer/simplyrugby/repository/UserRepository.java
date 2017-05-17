@@ -91,4 +91,11 @@ public class UserRepository {
                 .filter(user -> user.getUsername().equalsIgnoreCase(username))
                 .findFirst();
     }
+
+    public User getDefaultGuest() {
+        return users.stream()
+                .filter(user -> user instanceof Guest)
+                .filter(user -> user.getUsername().equalsIgnoreCase("guest"))
+                .findFirst().orElse(null);
+    }
 }
