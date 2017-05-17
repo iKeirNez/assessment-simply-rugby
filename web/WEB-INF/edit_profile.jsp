@@ -4,8 +4,9 @@
 <c:set var="errors" value="${requestScope.errors}" />
 <html>
 <head>
-    <c:import url="/WEB-INF/includes/head.jsp" />
-    <title>Edit Profile</title>
+    <c:import url="/WEB-INF/includes/head.jsp">
+        <c:param name="pageTitle" value="Edit Profile" />
+    </c:import>
 </head>
 <body>
 <c:import url="/WEB-INF/includes/navbar.jsp" />

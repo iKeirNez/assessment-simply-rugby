@@ -3,8 +3,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <c:import url="/WEB-INF/includes/head.jsp" />
-    <title>Skill Viewer</title>
+    <c:import url="/WEB-INF/includes/head.jsp">
+        <c:param name="pageTitle" value="Skill Tracking" />
+    </c:import>
 </head>
 <body>
 <c:import url="/WEB-INF/includes/navbar.jsp" />

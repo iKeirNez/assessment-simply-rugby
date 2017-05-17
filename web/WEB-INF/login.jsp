@@ -4,8 +4,9 @@
 <%--@elvariable id="errors" type="java.util.Map"--%>
 <html>
 <head>
-    <c:import url="/WEB-INF/includes/head.jsp" />
-    <title>Login</title>
+    <c:import url="/WEB-INF/includes/head.jsp">
+        <c:param name="pageTitle" value="Login" />
+    </c:import>
 </head>
 <body>
 <c:import url="/WEB-INF/includes/navbar.jsp" />
