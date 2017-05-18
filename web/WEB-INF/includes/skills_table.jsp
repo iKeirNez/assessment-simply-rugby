@@ -1,6 +1,6 @@
 <%--@elvariable id="targetUser" type="com.keirnellyer.simplyrugby.user.Member"--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<table class="table table-bordered table-responsive skills-table">
+<table class="table table-bordered skills-table">
     <thead>
     <tr>
         <th rowspan="2">Category</th>
