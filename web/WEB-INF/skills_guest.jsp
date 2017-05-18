@@ -20,7 +20,7 @@
         <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
             <c:if test="${not empty errors.target}">
                 <div class="alert alert-danger" role="alert">
-                    <strong>Error:/strong> ${errors.target}
+                    <strong>Error:</strong> ${errors.target}
                 </div>
             </c:if>
 
