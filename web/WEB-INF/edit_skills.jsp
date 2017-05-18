@@ -13,14 +13,16 @@
 <c:import url="/WEB-INF/includes/navbar.jsp" />
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-4 col-md-3 col-lg-2 push-sm-8 push-md-9 push-lg-10 pb-3">
+        <div class="col-sm-12 col-md-3 col-lg-2 push-md-9 push-lg-10 pb-3">
             <c:import url="/WEB-INF/includes/user_selector.jsp" />
         </div>
 
-        <div class="col-sm-12 col-md-8 col-lg-8 col-xl-6 pull-md-2 pull-lg-0">
+        <div class="col-sm-12 col-md-8 col-lg-8 pull-md-2 pull-lg-1">
             <c:if test="${not empty errors.target}">
-                <div class="alert alert-danger" role="alert">
-                    <strong>Error:</strong> ${errors.target}
+                <div class="row">
+                    <div class="alert alert-danger" role="alert">
+                        <strong>Error:</strong> ${errors.target}
+                    </div>
                 </div>
             </c:if>
 
