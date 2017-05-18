@@ -75,7 +75,6 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
-        // TODO view error messages in JSP
         req.setAttribute("errors", errors);
         req.getRequestDispatcher("/WEB-INF/register.jsp").forward(req, resp);
     }
