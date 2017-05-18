@@ -1,5 +1,6 @@
 <%--@elvariable id="availableTargets" type="java.util.List<com.keirnellyer.simplyrugby.user.Member>"--%>
 <%--@elvariable id="targetUser" type="com.keirnellyer.simplyrugby.user.Member"--%>
+<%--@elvariable id="errors" type="java.util.Map<java.lang.String,java.lang.String>"--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -16,8 +17,14 @@
             <c:import url="/WEB-INF/includes/user_selector.jsp" />
         </div>
 
-        <c:if test="${not empty targetUser}">
-            <div class="col-sm-12 col-md-8 col-lg-8 col-xl-6 pull-md-2 pull-lg-0">
+        <div class="col-sm-12 col-md-8 col-lg-8 col-xl-6 pull-md-2 pull-lg-0">
+            <c:if test="${not empty errors.target}">
+                <div class="alert alert-danger" role="alert">
+                    <strong>Error:</strong> ${errors.target}
+                </div>
+            </c:if>
+
+            <c:if test="${not empty targetUser}">
                 <form action="" method="post">
                     <div class="row">
                         <div class="table-responsive">
@@ -75,8 +82,8 @@
                         </div>
                     </div>
                 </form>
-            </div>
-        </c:if>
+            </c:if>
+        </div>
     </div>
 </div>
 

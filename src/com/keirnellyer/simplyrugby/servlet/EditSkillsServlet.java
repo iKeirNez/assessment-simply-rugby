@@ -1,5 +1,6 @@
 package com.keirnellyer.simplyrugby.servlet;
 
+import com.keirnellyer.simplyrugby.exception.UserException;
 import com.keirnellyer.simplyrugby.repository.UserRepository;
 import com.keirnellyer.simplyrugby.skill.Skill;
 import com.keirnellyer.simplyrugby.skill.SkillCategory;
@@ -28,7 +29,13 @@ public class EditSkillsServlet extends TargetableServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Map<String, String> errors = new HashMap<>();
-        Member targetUser = getTargetUser(req);
+        Member targetUser = null;
+
+        try {
+            targetUser = getTargetUser(req);
+        } catch (UserException e) {
+            errors.put("target", e.getMessage());
+        }
 
         if (targetUser != null) {
             for (SkillCategory category : targetUser.getSkills()) {

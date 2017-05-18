@@ -1,5 +1,6 @@
 package com.keirnellyer.simplyrugby.servlet;
 
+import com.keirnellyer.simplyrugby.exception.UserException;
 import com.keirnellyer.simplyrugby.repository.UserRepository;
 import com.keirnellyer.simplyrugby.user.Member;
 import com.keirnellyer.simplyrugby.user.User;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -23,13 +26,21 @@ public class TargetableServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Member targetUser = getTargetUser(req);
+        Map<String, String> errors = new HashMap<>();
+        Member targetUser = null;
+
+        try {
+            targetUser = getTargetUser(req);
+        } catch (UserException e) {
+            errors.put("target", e.getMessage());
+        }
 
         if (targetUser != null) {
             req.setAttribute("targetUser", targetUser);
         }
 
         req.setAttribute("availableTargets", getAvailableTargets());
+        req.setAttribute("errors", errors);
     }
 
     protected List<Member> getAvailableTargets() {
@@ -39,10 +50,9 @@ public class TargetableServlet extends HttpServlet {
                 .collect(Collectors.toList());
     }
 
-    protected Member getTargetUser(HttpServletRequest req) {
+    protected Member getTargetUser(HttpServletRequest req) throws UserException {
         String targetStr = req.getParameter("target");
 
-        // TODO throw exceptions
         if (targetStr != null) {
             Optional<User> userOptional = userRepository.getByUsername(targetStr);
 
@@ -51,7 +61,11 @@ public class TargetableServlet extends HttpServlet {
 
                 if (user instanceof Member) {
                     return (Member) user;
+                } else {
+                    throw new UserException("Target user is not a Member.");
                 }
+            } else {
+                throw new UserException("Target user not found.");
             }
         }
 
