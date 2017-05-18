@@ -69,7 +69,6 @@ public class LoginServlet extends HttpServlet {
             errors.put("password", "Please enter a password.");
         }
 
-        // TODO view error messages in JSP
         req.setAttribute("errors", errors);
         req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
     }
