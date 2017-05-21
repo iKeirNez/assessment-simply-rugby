@@ -35,7 +35,7 @@ public class UserRepository {
         initializeUsers();
     }
 
-    public void initializeUsers() {
+    private void initializeUsers() {
         Administrator admin = new Administrator("admin");
         admin.setPassword("admin");
         users.add(admin);

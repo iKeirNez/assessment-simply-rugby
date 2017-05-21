@@ -1,15 +1,12 @@
 package com.keirnellyer.simplyrugby.servlet;
 
 import com.keirnellyer.simplyrugby.exception.UserException;
-import com.keirnellyer.simplyrugby.repository.UserRepository;
 import com.keirnellyer.simplyrugby.skill.Skill;
 import com.keirnellyer.simplyrugby.skill.SkillCategory;
 import com.keirnellyer.simplyrugby.user.Member;
-import com.keirnellyer.simplyrugby.user.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

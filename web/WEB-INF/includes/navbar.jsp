@@ -13,7 +13,7 @@
         <div class="navbar-nav mr-auto">
             <!-- TODO: Apply class 'active' for active links -->
             <c:if test="${not empty user}">
-                <a class="navbar-text nav-item nav-link" href="<c:url value="${sessionScope.userHome}"/>">Home</a>
+                <%--<a class="navbar-text nav-item nav-link" href="<c:url value="${sessionScope.userHome}"/>">Home</a>--%>
 
                 <c:if test="${not empty user.navigation}">
                     <c:forEach items="${user.navigation.items}" var="navElement">
