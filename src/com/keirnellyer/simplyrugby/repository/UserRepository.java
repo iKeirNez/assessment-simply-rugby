@@ -44,28 +44,25 @@ public class UserRepository {
         jSmith.setPassword("password");
         jSmith.setFirstName("John");
         jSmith.setLastName("Smith");
-
-        List<SkillCategory> skills1 = getDefaultSkills();
-        writeDefaultComments(jSmith, skills1);
-        randomizeSkillValues(skills1);
-        skills1.forEach(jSmith::addSkill);
-
+        attachDefaultSkills(jSmith);
         users.add(jSmith);
 
         SeniorMember gMullen = new SeniorMember("ged");
         gMullen.setPassword("password");
         gMullen.setFirstName("Ged");
         gMullen.setLastName("Mullen");
-
-        List<SkillCategory> skills2 = getDefaultSkills();
-        writeDefaultComments(gMullen, skills2);
-        randomizeSkillValues(skills2);
-        skills2.forEach(gMullen::addSkill);
-
+        attachDefaultSkills(gMullen);
         users.add(gMullen);
 
         Guest guest = new Guest("guest");
         users.add(guest);
+    }
+
+    private void attachDefaultSkills(Member member) {
+        List<SkillCategory> skills2 = getDefaultSkills();
+        writeDefaultComments(member, skills2);
+        randomizeSkillValues(skills2);
+        skills2.forEach(member::addSkill);
     }
 
     private static List<SkillCategory> getDefaultSkills() {
