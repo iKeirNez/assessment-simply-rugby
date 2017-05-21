@@ -31,5 +31,14 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar:///usr/local/Cellar/jetty/9.4.5.v20170502/libexec/lib/apache-jsp/org.eclipse.jetty.apache-jsp-9.4.5.v20170502.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

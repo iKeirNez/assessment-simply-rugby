@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="exploded-ear" name="simply-rugby:ear exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/simply_rugby_ear_exploded</output-path>
-    <root id="root">
-      <element id="javaee-facet-resources" facet="simply-rugby/javaeeApplication/javaEEApplication" />
-    </root>
-  </artifact>
-</component>

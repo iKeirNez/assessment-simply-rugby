@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="simply-rugby:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/simply_rugby_war</output-path>
+    <root id="archive" name="simply-rugby_war.war">
+      <element id="artifact" artifact-name="simply-rugby:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="file-copy" path="/usr/local/Cellar/jetty/9.4.5.v20170502/libexec/lib/apache-jstl/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
