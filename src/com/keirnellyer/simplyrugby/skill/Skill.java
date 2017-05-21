@@ -4,6 +4,10 @@ public class Skill {
     private final String name;
     private int value;
 
+    public Skill(Skill skill) {
+        this(skill.name, skill.value);
+    }
+
     public Skill(String name) {
         this(name, 1);
     }
@@ -28,5 +32,4 @@ public class Skill {
     public void setValue(int value) {
         this.value = value;
     }
-
 }

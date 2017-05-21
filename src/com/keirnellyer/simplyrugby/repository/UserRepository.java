@@ -7,11 +7,31 @@ import com.keirnellyer.simplyrugby.user.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 public class UserRepository {
+    private static final List<SkillCategory> DEFAULT_SKILLS = new ArrayList<SkillCategory>(){{
+        String[][] skills = {
+                {"Passing", "Standard", "Spin", "Pop"},
+                {"Tackling", "Front", "Rear", "Side", "Scrabble"},
+                {"Kicking", "Drop", "Punt", "Grubber", "Goal"}
+        };
+
+        for (String[] skillArray : skills) {
+            SkillCategory category = new SkillCategory(skillArray[0]);
+
+            for (int i = 1; i < skillArray.length; i++) {
+                category.addSkill(new Skill(skillArray[i], 1));
+            }
+
+            add(category);
+        }
+    }};
+
     private final List<User> users = new ArrayList<>();
 
-    {
+    public UserRepository() {
         initializeUsers();
     }
 
@@ -24,45 +44,44 @@ public class UserRepository {
         jSmith.setPassword("password");
         jSmith.setFirstName("John");
         jSmith.setLastName("Smith");
-        getDefaultSkills().forEach(jSmith::addSkill);
+
+        List<SkillCategory> skills1 = getDefaultSkills();
+        writeDefaultComments(jSmith, skills1);
+        randomizeSkillValues(skills1);
+        skills1.forEach(jSmith::addSkill);
+
         users.add(jSmith);
 
         SeniorMember gMullen = new SeniorMember("ged");
         gMullen.setPassword("password");
         gMullen.setFirstName("Ged");
         gMullen.setLastName("Mullen");
-        getDefaultSkills().forEach(gMullen::addSkill);
+
+        List<SkillCategory> skills2 = getDefaultSkills();
+        writeDefaultComments(gMullen, skills2);
+        randomizeSkillValues(skills2);
+        skills2.forEach(gMullen::addSkill);
+
         users.add(gMullen);
 
         Guest guest = new Guest("guest");
         users.add(guest);
     }
 
-    private List<SkillCategory> getDefaultSkills() {
-        List<SkillCategory> defaultSkills = new ArrayList<>();
-        SkillCategory passing = new SkillCategory("Passing");
-        passing.addSkill(new Skill("Standard", 5));
-        passing.addSkill(new Skill("Spin", 1));
-        passing.addSkill(new Skill("Pop", 5));
-        passing.setComment("Passing is excellent but could be better.");
-        defaultSkills.add(passing);
+    private static List<SkillCategory> getDefaultSkills() {
+        return DEFAULT_SKILLS.stream()
+                .map(SkillCategory::new)
+                .collect(Collectors.toList());
+    }
 
-        SkillCategory tackling = new SkillCategory("Tackling");
-        tackling.addSkill(new Skill("Front", 3));
-        tackling.addSkill(new Skill("Rear", 5));
-        tackling.addSkill(new Skill("Side", 4));
-        tackling.addSkill(new Skill("Scrabble", 5));
-        tackling.setComment("Especially good at tackling from the rear.");
-        defaultSkills.add(tackling);
+    private static void writeDefaultComments(Member member, List<SkillCategory> skills) {
+        skills.forEach(category -> category.setComment(member.getFirstName() + ", lorem ipsum dolar"));
+    }
 
-        SkillCategory kicking = new SkillCategory("Kicking");
-        kicking.addSkill(new Skill("Drop", 5));
-        kicking.addSkill(new Skill("Punt", 5));
-        kicking.addSkill(new Skill("Grubber", 5));
-        kicking.addSkill(new Skill("Goal", 2));
-        kicking.setComment("Rubbish at goals.");
-        defaultSkills.add(kicking);
-        return defaultSkills;
+    private static void randomizeSkillValues(List<SkillCategory> categories) {
+        categories.forEach(category ->
+                category.getSkills().forEach(skill ->
+                        skill.setValue(ThreadLocalRandom.current().nextInt(1, 6))));
     }
 
     public List<User> getAllUsers() {
