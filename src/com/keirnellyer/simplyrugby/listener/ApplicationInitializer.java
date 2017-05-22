@@ -7,6 +7,9 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+/**
+ * Initializes application-wide variables which can be accessed easily anywhere.
+ */
 @WebListener
 public class ApplicationInitializer implements ServletContextListener {
     @Override

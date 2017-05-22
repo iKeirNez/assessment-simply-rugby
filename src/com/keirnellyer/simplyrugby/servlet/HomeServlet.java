@@ -10,6 +10,9 @@ import java.io.IOException;
 
 import static com.keirnellyer.simplyrugby.util.SessionUtil.*;
 
+/**
+ * Handles redirection of user to appropriate home page.
+ */
 @WebServlet("")
 public class HomeServlet extends HttpServlet {
     @Override

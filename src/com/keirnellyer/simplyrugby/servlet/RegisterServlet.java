@@ -14,6 +14,14 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Handles registering of users and display of the view model.
+ *
+ * Forwards any errors that occur to the view model through use of the "errors" attribute.
+ *
+ * When a user registers successfully, the request is forwarded to the login servlet, where the user can then
+ * use their new credentials to log in.
+ */
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
 

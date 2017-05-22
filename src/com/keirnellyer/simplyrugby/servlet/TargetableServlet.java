@@ -16,7 +16,19 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class TargetableServlet extends HttpServlet {
+/**
+ * Super-class for sharing common code between servlets which are target driven.
+ *
+ * Populates the "availableTargets" attribute with applicable {@link User} instances.
+ *
+ * Fetches the "target" parameter from the request and attempts to match it to a {@link User} instance, if successful
+ * the user is placed in the "targetUser" attribute.
+ *
+ * If the parameter is set and the user is found, then the "targetUser" attribute will be set to the {@link User}
+ * instance. Otherwise, if the parameter is not set or the user is not found, then the "targetUser" will be null and
+ * an appropriate error will be placed in the "errors" map.
+ */
+public abstract class TargetableServlet extends HttpServlet {
     protected UserRepository userRepository;
 
     @Override
@@ -59,6 +71,7 @@ public class TargetableServlet extends HttpServlet {
             if (userOptional.isPresent()) {
                 User user = userOptional.get();
 
+                // TODO methodise
                 if (user instanceof Member) {
                     return (Member) user;
                 } else {

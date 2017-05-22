@@ -9,6 +9,9 @@ import java.io.IOException;
 
 import static com.keirnellyer.simplyrugby.util.SessionUtil.*;
 
+/**
+ * Prevents logged-in users from attempting to login/register without first signing out.
+ */
 @WebFilter({"/login/*", "/register/*"})
 public class LoginRegisterFilter implements Filter {
     @Override

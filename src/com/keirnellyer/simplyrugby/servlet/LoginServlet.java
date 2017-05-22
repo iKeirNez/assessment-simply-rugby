@@ -15,6 +15,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Handles logging in of users and display of the view model.
+ *
+ * Forwards any errors that occur to the view model through use of the "errors" attribute.
+ *
+ * When a user successfully logs in, the "user" attribute is assigned the {@link User} instance of
+ * the logged in user.
+ */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 

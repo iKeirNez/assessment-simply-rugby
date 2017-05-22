@@ -11,6 +11,10 @@ import java.io.IOException;
 
 import static com.keirnellyer.simplyrugby.util.SessionUtil.*;
 
+/**
+ * Prevents users accessing content they do not have permission to view.
+ * Shows an 'access denied' message instead.
+ */
 @WebFilter({"/member/*", "/admin/*", "/guest/*"})
 public class AccessControlFilter implements Filter {
     @Override

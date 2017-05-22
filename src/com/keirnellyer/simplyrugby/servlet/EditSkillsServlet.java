@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Handles editing of user skills.
+ */
 @WebServlet("/admin/edit_skills")
 public class EditSkillsServlet extends TargetableServlet {
 

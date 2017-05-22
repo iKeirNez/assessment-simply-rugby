@@ -9,6 +9,17 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 import java.io.IOException;
 
+/**
+ * A custom tag which when used, takes a {@link User} instances and prints out the most appropriate display name for
+ * the user.
+ *
+ * When user is null, returns "null".
+ *
+ * <strong>Examples</strong>
+ * {@link Administrator} user returns "Administrator"
+ * {@link Guest} user returns "Guest"
+ * {@link Member} user returns first name
+ */
 public class DisplayNameTag extends SimpleTagSupport {
     private User user;
 

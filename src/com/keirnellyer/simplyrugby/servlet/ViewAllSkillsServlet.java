@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Handles displaying of the skills tracking table used by {@link com.keirnellyer.simplyrugby.user.Guest} accounts.
+ */
 @WebServlet("/guest/skills")
 public class ViewAllSkillsServlet extends TargetableServlet {
     @Override

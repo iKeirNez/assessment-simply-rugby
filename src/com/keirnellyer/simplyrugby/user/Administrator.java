@@ -3,6 +3,9 @@ package com.keirnellyer.simplyrugby.user;
 import com.keirnellyer.simplyrugby.navbar.Navigation;
 import com.keirnellyer.simplyrugby.navbar.NavigationElement;
 
+/**
+ * Top level user type with super-user privileges.
+ */
 public class Administrator extends User {
     public Administrator(String username) {
         super(username);

@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A servlet which manages the editing of a member profile.
+ */
 @WebServlet("/member/edit_profile")
 public class EditProfileServlet extends HttpServlet {
     @Override

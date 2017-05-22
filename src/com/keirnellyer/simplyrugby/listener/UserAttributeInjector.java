@@ -7,6 +7,9 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionBindingEvent;
 
+/**
+ * Listens for the user attribute to be set and adds some additional attributes.
+ */
 @WebListener
 public class UserAttributeInjector implements HttpSessionAttributeListener {
     @Override

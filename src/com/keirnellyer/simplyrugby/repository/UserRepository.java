@@ -10,6 +10,10 @@ import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
+/**
+ * A repository responsible for initializing, storing and retrieving {@link User} instances.
+ * TODO JavaDocs
+ */
 public class UserRepository {
     private static final List<SkillCategory> DEFAULT_SKILLS = new ArrayList<SkillCategory>(){{
         String[][] skills = {
