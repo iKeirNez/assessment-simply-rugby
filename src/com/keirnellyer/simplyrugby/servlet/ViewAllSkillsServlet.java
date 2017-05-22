@@ -38,6 +38,7 @@ public class ViewAllSkillsServlet extends HttpServlet {
         }
 
         req.setAttribute("availableTargets", targetable.getAvailableTargets());
+        req.setAttribute("errors", errors);
         req.getRequestDispatcher("/WEB-INF/skills_guest.jsp").forward(req, resp);
     }
 }
