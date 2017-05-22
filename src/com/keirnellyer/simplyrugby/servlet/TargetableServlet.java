@@ -19,7 +19,8 @@ import java.util.stream.Collectors;
 /**
  * Super-class for sharing common code between servlets which are target driven.
  *
- * Populates the "availableTargets" attribute with applicable {@link User} instances.
+ * Populates the "availableTargets" attribute with applicable (defined by
+ * {@link TargetableServlet#isApplicableTarget(User)}) {@link User} instances.
  *
  * Fetches the "target" parameter from the request and attempts to match it to a {@link User} instance, if successful
  * the user is placed in the "targetUser" attribute.
@@ -39,7 +40,7 @@ public abstract class TargetableServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Map<String, String> errors = new HashMap<>();
-        Member targetUser = null;
+        User targetUser = null;
 
         try {
             targetUser = getTargetUser(req);
@@ -55,14 +56,13 @@ public abstract class TargetableServlet extends HttpServlet {
         req.setAttribute("errors", errors);
     }
 
-    protected List<Member> getAvailableTargets() {
+    protected List<User> getAvailableTargets() {
         return userRepository.getAllUsers().stream()
-                .filter(u -> u instanceof Member)
-                .map(u -> (Member) u)
+                .filter(this::isApplicableTarget)
                 .collect(Collectors.toList());
     }
 
-    protected Member getTargetUser(HttpServletRequest req) throws UserException {
+    protected User getTargetUser(HttpServletRequest req) throws UserException {
         String targetStr = req.getParameter("target");
 
         if (targetStr != null) {
@@ -71,9 +71,8 @@ public abstract class TargetableServlet extends HttpServlet {
             if (userOptional.isPresent()) {
                 User user = userOptional.get();
 
-                // TODO methodise
-                if (user instanceof Member) {
-                    return (Member) user;
+                if (isApplicableTarget(user)) {
+                    return user;
                 } else {
                     throw new UserException("Target user is not a Member.");
                 }
@@ -84,4 +83,6 @@ public abstract class TargetableServlet extends HttpServlet {
 
         return null;
     }
+
+    protected abstract boolean isApplicableTarget(User user);
 }

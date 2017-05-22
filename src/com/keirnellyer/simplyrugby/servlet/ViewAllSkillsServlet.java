@@ -1,5 +1,8 @@
 package com.keirnellyer.simplyrugby.servlet;
 
+import com.keirnellyer.simplyrugby.user.Member;
+import com.keirnellyer.simplyrugby.user.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,5 +19,10 @@ public class ViewAllSkillsServlet extends TargetableServlet {
         super.doGet(req, resp);
 
         req.getRequestDispatcher("/WEB-INF/skills_guest.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected boolean isApplicableTarget(User user) {
+        return user instanceof Member;
     }
 }
