@@ -34,7 +34,7 @@ public class ViewAllSkillsServlet extends HttpServlet {
         try {
             targetable.getTargetUser().ifPresent(member -> req.setAttribute("targetUser", member));
         } catch (UserException e) {
-            errors.put("user", e.getMessage());
+            errors.put("target", e.getMessage());
         }
 
         req.setAttribute("availableTargets", targetable.getAvailableTargets());

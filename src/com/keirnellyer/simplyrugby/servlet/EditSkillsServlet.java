@@ -54,7 +54,7 @@ public class EditSkillsServlet extends HttpServlet {
         try {
             targetOptional = targetable.getTargetUser();
         } catch (UserException e) {
-            errors.put("user", e.getMessage());
+            errors.put("target", e.getMessage());
         }
 
         if (targetOptional.isPresent()) {
