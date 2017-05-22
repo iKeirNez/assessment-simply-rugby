@@ -52,7 +52,7 @@ public class TargetableRequest<T extends User> {
                     // un-safe cast is safe
                     return Optional.of((T) user);
                 } else {
-                    throw new UserException("User is not of type: " + clazz.getName());
+                    throw new UserException("User is not of correct type.");
                 }
             } else {
                 throw new UserException("User not found.");
