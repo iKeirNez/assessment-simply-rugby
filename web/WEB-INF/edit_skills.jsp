@@ -20,7 +20,7 @@
         <div class="col-sm-12 col-md-8 col-lg-8 pull-md-2 pull-lg-1">
             <c:if test="${not empty errors.target}">
                 <div class="row">
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert alert-danger mx-auto" role="alert">
                         <strong>Error:</strong> ${errors.target}
                     </div>
                 </div>
