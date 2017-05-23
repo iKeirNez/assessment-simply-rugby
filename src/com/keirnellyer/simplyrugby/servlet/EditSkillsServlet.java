@@ -74,7 +74,7 @@ public class EditSkillsServlet extends HttpServlet {
                     String category = key.substring("comment_".length(), key.length());
                     String value = value(key, values);
 
-                    administrator.updateMemberComment(target, category, value);
+                    administrator.updateCategoryComment(target, category, value);
                 }
             }
 
@@ -104,7 +104,7 @@ public class EditSkillsServlet extends HttpServlet {
             // TODO rethrow?
             int intValue = Integer.parseInt(value);
 
-            administrator.updateMemberSkill(target, category, skill, intValue);
+            administrator.updateSkillValue(target, category, skill, intValue);
             return true;
         }
 
