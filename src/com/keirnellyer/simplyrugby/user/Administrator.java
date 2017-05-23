@@ -22,6 +22,20 @@ public class Administrator extends User {
         setNavigation(navigation);
     }
 
+    public void updateMemberSkill(Member member, String category, String skill, int value) {
+        member.getSkills().stream()
+                .filter(c -> c.getName().equalsIgnoreCase(category))
+                .flatMap(c -> c.getSkills().stream()
+                        .filter(s -> s.getName().equalsIgnoreCase(skill)))
+                .forEach(s -> s.setValue(value));
+    }
+
+    public void updateMemberComment(Member member, String category, String comment) {
+        member.getSkills().stream()
+                .filter(c -> c.getName().equalsIgnoreCase(category))
+                .forEach(c -> c.setComment(comment));
+    }
+
     @Override
     public String toString() {
         return "Administrator{} " + super.toString();

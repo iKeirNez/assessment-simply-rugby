@@ -60,14 +60,15 @@
                                             <c:forEach begin="1" end="5" varStatus="loop">
                                                 <td align="center">
                                                     <input type="radio"
-                                                           name="${category.name}_${skill.name}" value="${loop.index}"
+                                                           name="skill_${category.name}_${skill.name}"
+                                                           value="${loop.index}"
                                                            <c:if test="${skill.value == loop.index}">checked</c:if> />
                                                 </td>
                                             </c:forEach>
 
                                             <c:if test="${skillLoop.isFirst()}">
                                                 <td class="comment" rowspan="${rowSpan}">
-                                                    <textarea class="form-control" name="${category.name}_cmnt">${category.comment}</textarea>
+                                                    <textarea class="form-control" name="comment_${category.name}">${category.comment}</textarea>
                                                 </td>
                                             </c:if>
                                         </tr>

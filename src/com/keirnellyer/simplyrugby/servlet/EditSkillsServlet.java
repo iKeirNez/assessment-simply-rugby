@@ -2,8 +2,7 @@ package com.keirnellyer.simplyrugby.servlet;
 
 import com.keirnellyer.simplyrugby.exception.UserException;
 import com.keirnellyer.simplyrugby.repository.UserRepository;
-import com.keirnellyer.simplyrugby.skill.Skill;
-import com.keirnellyer.simplyrugby.skill.SkillCategory;
+import com.keirnellyer.simplyrugby.user.Administrator;
 import com.keirnellyer.simplyrugby.user.Member;
 import com.keirnellyer.simplyrugby.util.TargetableRequest;
 
@@ -16,6 +15,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 /**
  * Handles editing of user skills.
@@ -48,6 +48,7 @@ public class EditSkillsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Map<String, String> errors = new HashMap<>();
+        Administrator administrator = (Administrator) req.getSession(false).getAttribute("user");
         TargetableRequest<Member> targetable = new TargetableRequest<>(Member.class, userRepository, req);
         Optional<Member> targetOptional = Optional.empty();
 
@@ -60,21 +61,21 @@ public class EditSkillsServlet extends HttpServlet {
         if (targetOptional.isPresent()) {
             Member target = targetOptional.get();
 
-            for (SkillCategory category : target.getSkills()) {
-                for (Skill skill : category.getSkills()) {
-                    String skillValueKey = category.getName() + "_" + skill.getName();
-                    String skillValueStr = req.getParameter(skillValueKey);
+            for (Map.Entry<String, String[]> entry : req.getParameterMap().entrySet()) {
+                String key = entry.getKey();
+                String[] values = entry.getValue();
 
-                    try {
-                        int skillValue = Integer.parseInt(skillValueStr);
-                        skill.setValue(skillValue);
-                    } catch (NumberFormatException e) {
-                        errors.put(skillValueKey, "Invalid skill value: " + skillValueStr);
-                    }
+                if (key.startsWith("skill_")) {
+                    String subKey = key.substring("skill_".length(), key.length());
+                    String value = value(key, values);
+
+                    handleSkillUpdate(administrator, target, subKey, value);
+                } else if (key.startsWith("comment_")) {
+                    String category = key.substring("comment_".length(), key.length());
+                    String value = value(key, values);
+
+                    administrator.updateMemberComment(target, category, value);
                 }
-
-                String categoryComment = req.getParameter(category.getName() + "_cmnt");
-                category.setComment(categoryComment);
             }
 
             req.setAttribute("targetUser", target);
@@ -83,5 +84,30 @@ public class EditSkillsServlet extends HttpServlet {
         req.setAttribute("availableTargets", targetable.getAvailableTargets());
         req.setAttribute("errors", errors);
         req.getRequestDispatcher("/WEB-INF/edit_skills.jsp").forward(req, resp);
+    }
+
+    private String value(String key, String[] values) {
+        if (values.length > 1) {
+            log("Multiple values for: " + key + "\nDefaulting to value index 0.");
+        }
+
+        return values[0];
+    }
+
+    private boolean handleSkillUpdate(Administrator administrator, Member target, String subKey, String value) throws
+            NumberFormatException {
+        String[] split = subKey.split(Pattern.quote("_"));
+
+        if (split.length == 2) {
+            String category = split[0];
+            String skill = split[1];
+            // TODO rethrow?
+            int intValue = Integer.parseInt(value);
+
+            administrator.updateMemberSkill(target, category, skill, intValue);
+            return true;
+        }
+
+        return false;
     }
 }
