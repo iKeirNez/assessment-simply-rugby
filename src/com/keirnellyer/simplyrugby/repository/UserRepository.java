@@ -66,7 +66,7 @@ public class UserRepository {
         List<SkillCategory> skills2 = getDefaultSkills();
         writeDefaultComments(member, skills2);
         randomizeSkillValues(skills2);
-        skills2.forEach(member::addSkill);
+        skills2.forEach(member::addSkillCategory);
     }
 
     private static List<SkillCategory> getDefaultSkills() {

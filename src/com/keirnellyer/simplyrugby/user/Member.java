@@ -77,11 +77,11 @@ public abstract class Member extends User {
     }
 
     /**
-     * Adds a skill.
+     * Adds a skill category.
      *
-     * @param skill the skill
+     * @param skill the skill category
      */
-    public void addSkill(SkillCategory skill) {
+    public void addSkillCategory(SkillCategory skill) {
         skills.add(skill);
     }
 
