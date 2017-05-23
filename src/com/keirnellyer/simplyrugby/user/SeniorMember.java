@@ -13,4 +13,9 @@ public class SeniorMember extends Member {
     public SeniorMember(String username) {
         super(username);
     }
+
+    @Override
+    public String toString() {
+        return "SeniorMember{} " + super.toString();
+    }
 }

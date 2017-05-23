@@ -118,4 +118,11 @@ public class UserRepository {
                 .filter(user -> user.getUsername().equalsIgnoreCase("guest"))
                 .findFirst().orElse(null);
     }
+
+    @Override
+    public String toString() {
+        return "UserRepository{" +
+                "users=" + users +
+                '}';
+    }
 }

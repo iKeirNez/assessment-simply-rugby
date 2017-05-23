@@ -68,4 +68,13 @@ public abstract class User {
     public void setNavigation(Navigation navigation) {
         this.navigation = navigation;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", navigation=" + navigation +
+                '}';
+    }
 }

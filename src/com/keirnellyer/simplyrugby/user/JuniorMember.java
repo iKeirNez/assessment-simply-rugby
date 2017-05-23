@@ -13,4 +13,9 @@ public class JuniorMember extends Member {
     public JuniorMember(String username) {
         super(username);
     }
+
+    @Override
+    public String toString() {
+        return "JuniorMember{} " + super.toString();
+    }
 }

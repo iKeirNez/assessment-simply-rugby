@@ -93,4 +93,13 @@ public class SkillCategory {
     public void addSkill(Skill skill) {
         skills.add(skill);
     }
+
+    @Override
+    public String toString() {
+        return "SkillCategory{" +
+                "name='" + name + '\'' +
+                ", comment='" + comment + '\'' +
+                ", skills=" + skills +
+                '}';
+    }
 }

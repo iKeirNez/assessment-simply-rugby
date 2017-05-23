@@ -66,4 +66,12 @@ public class Skill {
     public void setValue(int value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "Skill{" +
+                "name='" + name + '\'' +
+                ", value=" + value +
+                '}';
+    }
 }

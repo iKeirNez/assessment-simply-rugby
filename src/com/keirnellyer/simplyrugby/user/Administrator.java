@@ -21,4 +21,9 @@ public class Administrator extends User {
 
         setNavigation(navigation);
     }
+
+    @Override
+    public String toString() {
+        return "Administrator{} " + super.toString();
+    }
 }

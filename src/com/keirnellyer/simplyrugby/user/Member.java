@@ -84,4 +84,13 @@ public abstract class Member extends User {
     public void addSkill(SkillCategory skill) {
         skills.add(skill);
     }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "skills=" + skills +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                "} " + super.toString();
+    }
 }

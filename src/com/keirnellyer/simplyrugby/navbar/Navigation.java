@@ -35,4 +35,11 @@ public class Navigation {
     public void addItem(NavigationElement item) {
         items.add(item);
     }
+
+    @Override
+    public String toString() {
+        return "Navigation{" +
+                "items=" + items +
+                '}';
+    }
 }

@@ -13,4 +13,9 @@ public class Guest extends User {
     public Guest(String username) {
         super(username);
     }
+
+    @Override
+    public String toString() {
+        return "Guest{} " + super.toString();
+    }
 }
