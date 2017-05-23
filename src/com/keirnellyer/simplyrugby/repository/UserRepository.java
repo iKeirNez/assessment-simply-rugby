@@ -76,7 +76,7 @@ public class UserRepository {
     }
 
     private static void writeDefaultComments(Member member, List<SkillCategory> skills) {
-        skills.forEach(category -> category.setComment(member.getFirstName() + ", lorem ipsum dolar"));
+        skills.forEach(category -> category.setComment(member.getFirstName() + ", lorem ipsum dolor"));
     }
 
     private static void randomizeSkillValues(List<SkillCategory> categories) {
