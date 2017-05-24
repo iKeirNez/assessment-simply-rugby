@@ -11,6 +11,11 @@ td.comment, .comment textarea {
     height: 100%;
 }
 
+body > .container {
+    /* Prevent content "touching" footer */
+    padding-bottom: 15px;
+}
+
 /* Navbar header styles
 -------------------------------------------------- */
 
