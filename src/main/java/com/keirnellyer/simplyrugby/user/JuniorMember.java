@@ -1,7 +1,7 @@
 package com.keirnellyer.simplyrugby.user;
 
 /**
- * A Junior Member.
+ * A junior member.
  */
 public class JuniorMember extends Member {
 

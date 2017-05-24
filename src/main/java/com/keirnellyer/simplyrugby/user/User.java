@@ -5,7 +5,7 @@ import com.keirnellyer.simplyrugby.navbar.Navigation;
 import java.util.Optional;
 
 /**
- * Represents a user which can log in and use the site in some form.
+ * A user which can log in and use the site in some form.
  */
 public abstract class User {
     private final String username;
