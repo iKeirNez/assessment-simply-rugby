@@ -1,7 +1,7 @@
 package com.keirnellyer.simplyrugby.skill;
 
 /**
- * Represents a skill which may have a name and a value (between 1 & 5).
+ * Represents a skill which may have a name and a value (between 1 &amp; 5).
  */
 public class Skill {
     private final String name;
