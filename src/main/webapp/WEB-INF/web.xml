@@ -3,10 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-        <jsp-config>
-            <taglib>
-                <taglib-uri>http://keirnellyer.com/jsp/tlds/keirTags</taglib-uri>
-                <taglib-location>/WEB-INF/tlds/display_name.tld</taglib-location>
-            </taglib>
-        </jsp-config>
+    <jsp-config>
+        <taglib>
+            <taglib-uri>http://keirnellyer.com/jsp/tlds/keirTags</taglib-uri>
+            <taglib-location>/WEB-INF/tlds/display_name.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/error/internal-error.jsp</location>
+    </error-page>
 </web-app>
