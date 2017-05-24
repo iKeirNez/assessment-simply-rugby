@@ -28,9 +28,6 @@ public class UserAttributeInjector implements HttpSessionAttributeListener {
                 userHome = "/guest/skills";
             } else if (user instanceof Member) {
                 userHome = "/member/skills.jsp";
-
-                // only senior members can edit profile
-                session.setAttribute("canEditProfile", user instanceof SeniorMember);
             } else if (user instanceof Administrator) {
                 userHome = "/admin/edit_skills";
             } else {

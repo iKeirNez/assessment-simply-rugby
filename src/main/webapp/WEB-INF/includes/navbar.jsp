@@ -26,16 +26,9 @@
         <div class="navbar-nav">
             <c:choose>
                 <c:when test="${not empty user}">
-                    <c:choose>
-                        <c:when test="${sessionScope.canEditProfile}">
-                            <a class="navbar-text nav-item nav-link" href="<c:url value="/member/edit_profile"/>">
-                                <keirtags:displayName user="${sessionScope.user}" />
-                            </a>
-                        </c:when>
-                        <c:otherwise>
-                            <span class="navbar-text"><keirtags:displayName user="${sessionScope.user}" /></span>
-                        </c:otherwise>
-                    </c:choose>
+                    <a class="navbar-text nav-item nav-link" href="<c:url value="/user/edit_profile"/>">
+                        <keirtags:displayName user="${sessionScope.user}" />
+                    </a>
                     <a class="navbar-text nav-item nav-link" href="<c:url value="/logout"/>">Logout</a>
                 </c:when>
                 <c:otherwise>

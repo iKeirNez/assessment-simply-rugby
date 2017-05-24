@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="user" scope="session" type="com.keirnellyer.simplyrugby.user.Member"/>
-<c:set var="errors" value="${requestScope.errors}" />
+<%--@elvariable id="user" type="com.keirnellyer.simplyrugby.user.User"--%>
+<%--@elvariable id="canEditPersonalDetails" type="java.lang.Boolean"--%>
+<%--@elvariable id="errors" type="java.util.Map<java.lang.String, java.lang.String>"--%>
 <html>
 <head>
     <c:import url="/WEB-INF/includes/head.jsp">
@@ -34,39 +35,42 @@
                                         </div>
                                     </c:if>
 
-                                    <div class="form-group ${not empty errors.first_name ? 'has-error' : ''}">
-                                        <c:if test="${not empty errors.first_name}">
-                                            <span class="help-block">${errors.first_name}</span>
-                                        </c:if>
+                                    <c:if test="${canEditPersonalDetails}">
+                                        <%--@elvariable id="user" type="com.keirnellyer.simplyrugby.user.Member"--%>
+                                        <div class="form-group ${not empty errors.first_name ? 'has-danger' : ''}">
+                                            <c:if test="${not empty errors.first_name}">
+                                                <span class="form-text text-muted">${errors.first_name}</span>
+                                            </c:if>
 
-                                        <div class="input-group">
+                                            <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-fw fa-user"></i>
                                             </span>
-                                            <input class="form-control" placeholder="First name" name="first_name"
-                                                   value="<c:out value="${param.first_name}" default="${user.firstName}" />"
-                                                   type="text" autofocus>
+                                                <input class="form-control" placeholder="First name" name="first_name"
+                                                       value="<c:out value="${param.first_name}" default="${user.firstName}" />"
+                                                       type="text" autofocus>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group ${not empty errors.last_name ? 'has-error' : ''}">
-                                        <c:if test="${not empty errors.last_name}">
-                                            <span class="help-block">${errors.last_name}</span>
-                                        </c:if>
+                                        <div class="form-group ${not empty errors.last_name ? 'has-danger' : ''}">
+                                            <c:if test="${not empty errors.last_name}">
+                                                <span class="form-text text-muted">${errors.last_name}</span>
+                                            </c:if>
 
-                                        <div class="input-group">
+                                            <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-fw fa-user"></i>
                                             </span>
-                                            <input class="form-control" placeholder="Last name" name="last_name"
-                                                   type="text"
-                                                   value="<c:out value="${param.last_name}" default="${user.lastName}" />">
+                                                <input class="form-control" placeholder="Last name" name="last_name"
+                                                       type="text"
+                                                       value="<c:out value="${param.last_name}" default="${user.lastName}" />">
+                                            </div>
                                         </div>
-                                    </div>
+                                    </c:if>
 
-                                    <div class="form-group ${not empty errors.password ? 'has-error' : ''}">
+                                    <div class="form-group ${not empty errors.password ? 'has-danger' : ''}">
                                         <c:if test="${not empty errors.password}">
-                                            <span class="help-block">${errors.password}</span>
+                                            <span class="form-text text-muted">${errors.password}</span>
                                         </c:if>
 
                                         <div class="input-group">
