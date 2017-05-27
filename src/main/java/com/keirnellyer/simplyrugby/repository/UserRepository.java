@@ -58,6 +58,20 @@ public class UserRepository {
         attachDefaultSkills(gMullen);
         users.add(gMullen);
 
+        SeniorMember kNellyer = new SeniorMember("iKeirNez");
+        kNellyer.setPassword("password");
+        kNellyer.setFirstName("Keir");
+        kNellyer.setLastName("Nellyer");
+        attachDefaultSkills(kNellyer);
+        users.add(kNellyer);
+
+        JuniorMember rDonaldson = new JuniorMember("rdonaldson");
+        rDonaldson.setPassword("password");
+        rDonaldson.setFirstName("Richard");
+        rDonaldson.setLastName("Donaldson");
+        attachDefaultSkills(rDonaldson);
+        users.add(rDonaldson);
+
         Guest guest = new Guest("guest");
         users.add(guest);
     }
