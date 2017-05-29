@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 
 /**
  * A repository responsible for initializing, storing and retrieving {@link User} instances.
- * TODO JavaDocs
  */
 public class UserRepository {
     private static final List<SkillCategory> DEFAULT_SKILLS = new ArrayList<SkillCategory>(){{
@@ -35,6 +34,9 @@ public class UserRepository {
 
     private final List<User> users = new ArrayList<>();
 
+    /**
+     * Constructs a new instance with default user accounts.
+     */
     public UserRepository() {
         initializeUsers();
     }
@@ -99,19 +101,42 @@ public class UserRepository {
                         skill.setValue(ThreadLocalRandom.current().nextInt(1, 6))));
     }
 
+    /**
+     * Gets all users.
+     *
+     * @return the users
+     */
     public List<User> getAllUsers() {
         return new ArrayList<>(users);
     }
 
+    /**
+     * Registers a user with the repository.
+     *
+     * @param user the user
+     */
     public void register(User user) {
         users.add(user);
     }
 
+    /**
+     * Checks if a user with the supplied username exists.
+     *
+     * @param username the username
+     * @return true if user exists, false otherwise
+     */
     public boolean exists(String username) {
         return users.stream()
                 .anyMatch(user -> user.getUsername().equalsIgnoreCase(username));
     }
 
+    /**
+     * Finds a user by their credentials.
+     *
+     * @param username the username
+     * @param password the password
+     * @return value present if found, empty otherwise
+     */
     public Optional<User> getByCredentials(String username, String password) {
         return users.stream()
                 .filter(user -> user.getUsername().equalsIgnoreCase(username))
@@ -120,12 +145,23 @@ public class UserRepository {
                 .findFirst();
     }
 
+    /**
+     * Finds a user by their username.
+     *
+     * @param username the username
+     * @return value present if found, empty otherwise
+     */
     public Optional<User> getByUsername(String username) {
         return users.stream()
                 .filter(user -> user.getUsername().equalsIgnoreCase(username))
                 .findFirst();
     }
 
+    /**
+     * Gets the default guest user.
+     *
+     * @return the guest user
+     */
     public User getDefaultGuest() {
         return users.stream()
                 .filter(user -> user instanceof Guest)
